@@ -228,7 +228,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!58 &233702061
 CircleCollider2D:
   m_ObjectHideFlags: 0
@@ -481,6 +481,7 @@ GameObject:
   - component: {fileID: 510174216}
   - component: {fileID: 510174215}
   - component: {fileID: 510174214}
+  - component: {fileID: 510174217}
   m_Layer: 0
   m_Name: Boss
   m_TagString: Untagged
@@ -591,6 +592,25 @@ Transform:
   - {fileID: 1935538504}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &510174217
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 510174213}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9f64a0a2c371bf84eb264e78f10039d0, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  maxHealth: 500
+  OnHealthChanged:
+    m_PersistentCalls:
+      m_Calls: []
+  OnBossDeath:
+    m_PersistentCalls:
+      m_Calls: []
 --- !u!1 &599575767
 GameObject:
   m_ObjectHideFlags: 0
@@ -608,7 +628,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!58 &599575768
 CircleCollider2D:
   m_ObjectHideFlags: 0
@@ -875,9 +895,13 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: baa80aff692cabf499e7150394241003, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  weaponList:
+  - {fileID: 11400000, guid: 7e6e4852a7699fc4b85a28bd3cd16080, type: 2}
+  - {fileID: 11400000, guid: f500c4551d5212446a6229c6537f06ba, type: 2}
   fixedPoint: {fileID: 665476595}
   firePoint: {fileID: 1099104081}
-  currentWeaponData: {fileID: 11400000, guid: 7e6e4852a7699fc4b85a28bd3cd16080, type: 2}
+  orbitDistance: 1
+  currentWeaponData: {fileID: 11400000, guid: f500c4551d5212446a6229c6537f06ba, type: 2}
 --- !u!1 &665476594
 GameObject:
   m_ObjectHideFlags: 0
@@ -1995,6 +2019,7 @@ GameObject:
   - component: {fileID: 1934689321}
   - component: {fileID: 1934689320}
   - component: {fileID: 1934689319}
+  - component: {fileID: 1934689322}
   m_Layer: 0
   m_Name: Enemy
   m_TagString: Untagged
@@ -2105,6 +2130,19 @@ Transform:
   - {fileID: 1259221976}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1934689322
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1934689318}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9fe9e4eccff370b40bfdde3ed1dd90ce, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  maxHealth: 50
 --- !u!1 &1935538503
 GameObject:
   m_ObjectHideFlags: 0
@@ -2460,9 +2498,9 @@ SceneRoots:
   m_Roots:
   - {fileID: 1603944949}
   - {fileID: 647317216}
-  - {fileID: 1934689321}
   - {fileID: 233702063}
   - {fileID: 599575770}
+  - {fileID: 1934689321}
   - {fileID: 510174216}
   - {fileID: 1217119610}
   - {fileID: 797947577}
