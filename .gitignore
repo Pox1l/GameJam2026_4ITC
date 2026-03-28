@@ -99,3 +99,9 @@ InitTestScene*.unity*
 /[Aa]ssets/[Ii]nit[Tt]est[Ss]cene*.unity*
 /GameJam2026/Library
 /GameJam2026/Temp
+
+# --- PŘIDÁNO PRO VYŘEŠENÍ KONFLIKTŮ ---
+*.cache
+/GameJam2026/obj/
+/GameJam2026/Logs/
+/GameJam2026/UserSettings/
