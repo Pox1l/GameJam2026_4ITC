@@ -16,6 +16,7 @@ MonoBehaviour:
     keys:
     - 2cda990e2423bbf4892e6590ba056729
     - cbc04ead01e97bb4097d7338b5de5df5
+    - 291dbf1c2c8d27544acc3c5558828f91
     values:
     - goDatas_byGlobalId:
         keys:
@@ -51,6 +52,34 @@ MonoBehaviour:
           isColorRecursive: 0
         - colorIndex: 0
           iconNameOrGuid: Camera Icon
+          isIconRecursive: 0
+          isColorRecursive: 0
+    - goDatas_byGlobalId:
+        keys:
+        - globalObjectIdString: GlobalObjectId_V1-2-291dbf1c2c8d27544acc3c5558828f91-647317214-0
+        - globalObjectIdString: GlobalObjectId_V1-2-291dbf1c2c8d27544acc3c5558828f91-1934689318-0
+        - globalObjectIdString: GlobalObjectId_V1-2-291dbf1c2c8d27544acc3c5558828f91-233702060-0
+        - globalObjectIdString: GlobalObjectId_V1-2-291dbf1c2c8d27544acc3c5558828f91-599575767-0
+        - globalObjectIdString: GlobalObjectId_V1-2-291dbf1c2c8d27544acc3c5558828f91-510174213-0
+        values:
+        - colorIndex: 0
+          iconNameOrGuid: ReflectionProbe Icon
+          isIconRecursive: 0
+          isColorRecursive: 0
+        - colorIndex: 2
+          iconNameOrGuid: 
+          isIconRecursive: 0
+          isColorRecursive: 0
+        - colorIndex: 2
+          iconNameOrGuid: 
+          isIconRecursive: 0
+          isColorRecursive: 0
+        - colorIndex: 2
+          iconNameOrGuid: 
+          isIconRecursive: 0
+          isColorRecursive: 0
+        - colorIndex: 2
+          iconNameOrGuid: 
           isIconRecursive: 0
           isColorRecursive: 0
   bookmarks: []
