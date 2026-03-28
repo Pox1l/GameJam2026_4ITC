@@ -1,0 +1,360 @@
+fileFormatVersion: 2
+guid: 0196d0d5e47800b4682d60153c267c6e
+ScriptedImporter:
+  internalIDToNameTable: []
+  externalObjects: {}
+  serializedVersion: 2
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
+  script: {fileID: 11500000, guid: 62a9f0aa5b59740cfbadc7e5f9823bb0, type: 3}
+  textureImporterSettings:
+    alphaSource: 1
+    mipMapMode: 0
+    enableMipMap: 0
+    fadeOut: 0
+    borderMipMap: 0
+    mipMapsPreserveCoverage: 0
+    alphaTestReferenceValue: 0.5
+    mipMapFadeDistanceStart: 1
+    mipMapFadeDistanceEnd: 3
+    convertToNormalMap: 0
+    heightScale: 0.25
+    normalMapFilter: 0
+    flipGreenChannel: 0
+    swizzle: 50462976
+    isReadable: 0
+    streamingMipmaps: 0
+    streamingMipmapsPriority: 0
+    vTOnly: 0
+    ignoreMipmapLimit: 0
+    nPOTScale: 1
+    sRGBTexture: 1
+    spriteMode: 2
+    spriteExtrude: 1
+    spriteMeshType: 1
+    alignment: 0
+    spritePivot: {x: 0.5, y: 0.5}
+    spritePixelsToUnits: 100
+    spriteBorder: {x: 0, y: 0, z: 0, w: 0}
+    spriteGenerateFallbackPhysicsShape: 0
+    generateCubemap: 6
+    cubemapConvolution: 0
+    seamlessCubemap: 0
+    alphaIsTransparency: 1
+    spriteTessellationDetail: -1
+    textureType: 8
+    textureShape: 1
+    singleChannelComponent: 0
+    flipbookRows: 0
+    flipbookColumns: 0
+    ignorePngGamma: 0
+    cookieMode: 0
+    filterMode: 0
+    aniso: 1
+    mipBias: 0
+    wrapU: 1
+    wrapV: 1
+    wrapW: 1
+    normalMap: 0
+    textureFormat: 0
+    maxTextureSize: 0
+    lightmap: 0
+    compressionQuality: 0
+    linearTexture: 0
+    grayScaleToAlpha: 0
+    rGBM: 0
+    cubemapConvolutionSteps: 0
+    cubemapConvolutionExponent: 0
+    maxTextureSizeSet: 0
+    compressionQualitySet: 0
+    textureFormatSet: 0
+    applyGammaDecoding: 0
+  previousAsepriteImporterSettings:
+    fileImportMode: 1
+    importHiddenLayers: 0
+    layerImportMode: 1
+    defaultPivotSpace: 0
+    defaultPivotAlignment: 7
+    customPivotPosition: {x: 0.5, y: 0.5}
+    spritePadding: 0
+    generateModelPrefab: 1
+    generateAnimationClips: 1
+    addSortingGroup: 1
+    addShadowCasters: 0
+  asepriteImporterSettings:
+    fileImportMode: 1
+    importHiddenLayers: 0
+    layerImportMode: 1
+    defaultPivotSpace: 0
+    defaultPivotAlignment: 7
+    customPivotPosition: {x: 0.5, y: 0.5}
+    spritePadding: 0
+    generateModelPrefab: 1
+    generateAnimationClips: 1
+    addSortingGroup: 1
+    addShadowCasters: 0
+  importFileNodeState: 1
+  platformSettingsDirtyTick: 0
+  textureAssetName: 
+  singleSpriteImportData:
+  - name: 
+    originalName: 
+    pivot: {x: 0, y: 0}
+    alignment: 0
+    border: {x: 0, y: 0, z: 0, w: 0}
+    rect:
+      serializedVersion: 2
+      x: 0
+      y: 0
+      width: 0
+      height: 0
+    spriteID: 
+    spriteBone: []
+    spriteOutline: []
+    vertices: []
+    spritePhysicsOutline: []
+    indices: 
+    edges: []
+    tessellationDetail: 0
+    uvTransform: {x: 0, y: 0}
+  animatedSpriteImportData:
+  - name: orc3_right_run_Frame_0
+    originalName: 
+    pivot: {x: 0.65055764, y: 0.71}
+    alignment: 9
+    border: {x: 0, y: 0, z: 0, w: 0}
+    rect:
+      serializedVersion: 2
+      x: 558
+      y: 4
+      width: 269
+      height: 200
+    spriteID: 9ac060a8020f9ad4eb0e0bdbd3125684
+    spriteBone: []
+    spriteOutline: []
+    vertices: []
+    spritePhysicsOutline: []
+    indices: 
+    edges: []
+    tessellationDetail: 0
+    uvTransform: {x: 558, y: 4}
+  - name: orc3_right_run_Frame_1
+    originalName: 
+    pivot: {x: 0.65055764, y: 0.71356785}
+    alignment: 9
+    border: {x: 0, y: 0, z: 0, w: 0}
+    rect:
+      serializedVersion: 2
+      x: 281
+      y: 214
+      width: 269
+      height: 199
+    spriteID: c67ee7f49f7664d4e87f9fd6b6955897
+    spriteBone: []
+    spriteOutline: []
+    vertices: []
+    spritePhysicsOutline: []
+    indices: 
+    edges: []
+    tessellationDetail: 0
+    uvTransform: {x: 281, y: 214}
+  - name: orc3_right_run_Frame_2
+    originalName: 
+    pivot: {x: 0.65055764, y: 0.71356785}
+    alignment: 9
+    border: {x: 0, y: 0, z: 0, w: 0}
+    rect:
+      serializedVersion: 2
+      x: 558
+      y: 214
+      width: 269
+      height: 199
+    spriteID: c01b278ebd37e584c87cc8c7336a9c58
+    spriteBone: []
+    spriteOutline: []
+    vertices: []
+    spritePhysicsOutline: []
+    indices: 
+    edges: []
+    tessellationDetail: 0
+    uvTransform: {x: 558, y: 214}
+  - name: orc3_right_run_Frame_3
+    originalName: 
+    pivot: {x: 0.65055764, y: 0.70297027}
+    alignment: 9
+    border: {x: 0, y: 0, z: 0, w: 0}
+    rect:
+      serializedVersion: 2
+      x: 4
+      y: 4
+      width: 269
+      height: 202
+    spriteID: 5777b6562e3785344a76b4c0975c7c83
+    spriteBone: []
+    spriteOutline: []
+    vertices: []
+    spritePhysicsOutline: []
+    indices: 
+    edges: []
+    tessellationDetail: 0
+    uvTransform: {x: 4, y: 4}
+  - name: orc3_right_run_Frame_4
+    originalName: 
+    pivot: {x: 0.65055764, y: 0.71}
+    alignment: 9
+    border: {x: 0, y: 0, z: 0, w: 0}
+    rect:
+      serializedVersion: 2
+      x: 4
+      y: 214
+      width: 269
+      height: 200
+    spriteID: 77e5f0c246d7117469f7fa15748db1a0
+    spriteBone: []
+    spriteOutline: []
+    vertices: []
+    spritePhysicsOutline: []
+    indices: 
+    edges: []
+    tessellationDetail: 0
+    uvTransform: {x: 4, y: 214}
+  - name: orc3_right_run_Frame_5
+    originalName: 
+    pivot: {x: 0.65055764, y: 0.71356785}
+    alignment: 9
+    border: {x: 0, y: 0, z: 0, w: 0}
+    rect:
+      serializedVersion: 2
+      x: 4
+      y: 422
+      width: 269
+      height: 199
+    spriteID: 66a01ada43c8a4040aae7d74ba81ae33
+    spriteBone: []
+    spriteOutline: []
+    vertices: []
+    spritePhysicsOutline: []
+    indices: 
+    edges: []
+    tessellationDetail: 0
+    uvTransform: {x: 4, y: 422}
+  - name: orc3_right_run_Frame_6
+    originalName: 
+    pivot: {x: 0.65055764, y: 0.71356785}
+    alignment: 9
+    border: {x: 0, y: 0, z: 0, w: 0}
+    rect:
+      serializedVersion: 2
+      x: 281
+      y: 422
+      width: 269
+      height: 199
+    spriteID: e71de311fb8b5e447a8f7f99f46bf52b
+    spriteBone: []
+    spriteOutline: []
+    vertices: []
+    spritePhysicsOutline: []
+    indices: 
+    edges: []
+    tessellationDetail: 0
+    uvTransform: {x: 281, y: 422}
+  - name: orc3_right_run_Frame_7
+    originalName: 
+    pivot: {x: 0.65055764, y: 0.70297027}
+    alignment: 9
+    border: {x: 0, y: 0, z: 0, w: 0}
+    rect:
+      serializedVersion: 2
+      x: 281
+      y: 4
+      width: 269
+      height: 202
+    spriteID: 1e9953e829a7bec4e8bb7db8c085dcbb
+    spriteBone: []
+    spriteOutline: []
+    vertices: []
+    spritePhysicsOutline: []
+    indices: 
+    edges: []
+    tessellationDetail: 0
+    uvTransform: {x: 281, y: 4}
+  spriteSheetImportData: []
+  asepriteLayers:
+  - layerIndex: 0
+    guid: -1673449326
+    name: orc3_right_run
+    layerFlags: 0
+    layerType: 0
+    blendMode: 0
+    cells:
+    - name: orc3_right_run_Frame_0
+      frameIndex: 0
+      cellRect:
+        x: -143
+        y: -142
+        width: 269
+        height: 200
+      spriteId: 9ac060a8020f9ad4eb0e0bdbd3125684
+    - name: orc3_right_run_Frame_1
+      frameIndex: 1
+      cellRect:
+        x: -143
+        y: -142
+        width: 269
+        height: 199
+      spriteId: c67ee7f49f7664d4e87f9fd6b6955897
+    - name: orc3_right_run_Frame_2
+      frameIndex: 2
+      cellRect:
+        x: -143
+        y: -142
+        width: 269
+        height: 199
+      spriteId: c01b278ebd37e584c87cc8c7336a9c58
+    - name: orc3_right_run_Frame_3
+      frameIndex: 3
+      cellRect:
+        x: -143
+        y: -142
+        width: 269
+        height: 202
+      spriteId: 5777b6562e3785344a76b4c0975c7c83
+    - name: orc3_right_run_Frame_4
+      frameIndex: 4
+      cellRect:
+        x: -143
+        y: -142
+        width: 269
+        height: 200
+      spriteId: 77e5f0c246d7117469f7fa15748db1a0
+    - name: orc3_right_run_Frame_5
+      frameIndex: 5
+      cellRect:
+        x: -143
+        y: -142
+        width: 269
+        height: 199
+      spriteId: 66a01ada43c8a4040aae7d74ba81ae33
+    - name: orc3_right_run_Frame_6
+      frameIndex: 6
+      cellRect:
+        x: -143
+        y: -142
+        width: 269
+        height: 199
+      spriteId: e71de311fb8b5e447a8f7f99f46bf52b
+    - name: orc3_right_run_Frame_7
+      frameIndex: 7
+      cellRect:
+        x: -143
+        y: -142
+        width: 269
+        height: 202
+      spriteId: 1e9953e829a7bec4e8bb7db8c085dcbb
+    linkedCells: []
+    parentIndex: -1
+  platformSettings: []
+  secondarySpriteTextures: []
+  spritePackingTag: 
+  canvasSize: {x: 64, y: 64}
