@@ -3,9 +3,10 @@ using TMPro;
 
 public class TimeManager : MonoBehaviour
 {
-    [Header("Reference (Pøiøadí se automaticky)")]
+    [Header("Reference")]
     public TextMeshProUGUI timerText;
 
+    [Header("Nastavení")]
     public float soulGainInterval = 10f;
 
     private float elapsedTime;
@@ -13,7 +14,6 @@ public class TimeManager : MonoBehaviour
 
     void Start()
     {
-        // Najde objekt podle Tagu
         if (timerText == null)
         {
             GameObject timerObj = GameObject.FindWithTag("Timer");
@@ -23,6 +23,7 @@ public class TimeManager : MonoBehaviour
 
     void Update()
     {
+        // Stopky
         elapsedTime += Time.deltaTime;
         int minutes = Mathf.FloorToInt(elapsedTime / 60);
         int seconds = Mathf.FloorToInt(elapsedTime % 60);
@@ -32,11 +33,22 @@ public class TimeManager : MonoBehaviour
             timerText.text = string.Format("{0:00}:{1:00}", minutes, seconds);
         }
 
+        // Interval pro pasivní duše
         intervalCounter += Time.deltaTime;
+
         if (intervalCounter >= soulGainInterval)
         {
-            intervalCounter -= soulGainInterval;
-            if (SoulManager.Instance != null) SoulManager.Instance.AddPassiveSouls();
+            intervalCounter = 0; // Reset poèítadla
+
+            if (SoulManager.Instance != null)
+            {
+                SoulManager.Instance.AddPassiveSouls();
+                Debug.Log("<color=green>TimeManager:</color> Interval vypršel, posílám duše!");
+            }
+            else
+            {
+                Debug.LogWarning("<color=red>TimeManager:</color> Nemùžu najít SoulManager.Instance!");
+            }
         }
     }
 }

@@ -54,6 +54,7 @@ MonoBehaviour:
         - globalObjectIdString: GlobalObjectId_V1-2-cbc04ead01e97bb4097d7338b5de5df5-915992287-0
         - globalObjectIdString: GlobalObjectId_V1-2-cbc04ead01e97bb4097d7338b5de5df5-134401378-0
         - globalObjectIdString: GlobalObjectId_V1-2-cbc04ead01e97bb4097d7338b5de5df5-1521059251-0
+        - globalObjectIdString: GlobalObjectId_V1-2-cbc04ead01e97bb4097d7338b5de5df5-1051429826-0
         values:
         - colorIndex: 3
           iconNameOrGuid: Canvas Icon
@@ -127,7 +128,7 @@ MonoBehaviour:
           iconNameOrGuid: cs Script Icon
           isIconRecursive: 0
           isColorRecursive: 0
-        - colorIndex: 0
+        - colorIndex: 7
           iconNameOrGuid: Folder Icon
           isIconRecursive: 0
           isColorRecursive: 0
@@ -137,6 +138,10 @@ MonoBehaviour:
           isColorRecursive: 0
         - colorIndex: 0
           iconNameOrGuid: Folder
+          isIconRecursive: 0
+          isColorRecursive: 0
+        - colorIndex: 6
+          iconNameOrGuid: Canvas Icon
           isIconRecursive: 0
           isColorRecursive: 0
     - goDatas_byGlobalId:

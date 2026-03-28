@@ -1,5 +1,6 @@
 using UnityEngine;
 using TMPro;
+using System.IO;
 
 public class SoulManager : MonoBehaviour
 {
@@ -10,25 +11,34 @@ public class SoulManager : MonoBehaviour
     public int passiveAmount = 10;
     public float multiplier = 1f;
 
-    [Header("Reference (Pøiøadí se automaticky)")]
+    [Header("UI Reference")]
     public TextMeshProUGUI soulText;
+
+    private string savePath;
 
     private void Awake()
     {
-        if (Instance == null) Instance = this;
-        else Destroy(gameObject);
+        if (Instance == null)
+        {
+            Instance = this;
+            // Podobné nastavení jako u tvého PlayerDataManageru
+            savePath = ProfileManager.GetSavePath("souls_save.json");
+            LoadSouls();
+        }
+        else
+        {
+            Destroy(gameObject);
+            return;
+        }
     }
 
     private void Start()
     {
-        // Najde objekt podle Tagu, pokud ještì není pøiøazen v Inspektoru
         if (soulText == null)
         {
             GameObject soulObj = GameObject.FindWithTag("SoulText");
             if (soulObj != null) soulText = soulObj.GetComponent<TextMeshProUGUI>();
         }
-
-        // Okamžitý update na "Souls: 0" hned po startu
         UpdateUI();
     }
 
@@ -36,6 +46,7 @@ public class SoulManager : MonoBehaviour
     {
         totalSouls += amount;
         UpdateUI();
+        SaveSouls(); // Uložit pøi zmìnì
     }
 
     public void AddPassiveSouls()
@@ -43,14 +54,59 @@ public class SoulManager : MonoBehaviour
         int gain = Mathf.RoundToInt(passiveAmount * multiplier);
         totalSouls += gain;
         UpdateUI();
+        SaveSouls(); // Uložit pøi zmìnì
+
+        Debug.Log($"<color=cyan>SoulManager:</color> Pøièteno {gain} pasivních duší. Celkem: {totalSouls}");
     }
 
     private void UpdateUI()
     {
         if (soulText != null)
         {
-            // Upraveno na formát "Souls: X"
             soulText.text = "Souls: " + totalSouls.ToString();
         }
     }
+
+    // --- LOGIKA UKLÁDÁNÍ ---
+
+    public void SaveSouls()
+    {
+        SoulSaveData data = new SoulSaveData();
+        data.totalSouls = totalSouls;
+
+        string json = JsonUtility.ToJson(data, true);
+        File.WriteAllText(savePath, json);
+
+        // Volitelné: Bliknutí ikony uložení (pokud ji používáš i pro duše)
+        if (SaveVisual.instance != null) SaveVisual.ReportSave();
+    }
+
+    public void LoadSouls()
+    {
+        if (File.Exists(savePath))
+        {
+            try
+            {
+                string json = File.ReadAllText(savePath);
+                SoulSaveData data = JsonUtility.FromJson<SoulSaveData>(json);
+                totalSouls = data.totalSouls;
+            }
+            catch
+            {
+                Debug.LogWarning("Soul save file corrupted.");
+                totalSouls = 0;
+            }
+        }
+        else
+        {
+            totalSouls = 0;
+        }
+    }
+}
+
+// Pomocná tøída pro JSON
+[System.Serializable]
+public class SoulSaveData
+{
+    public int totalSouls;
 }
