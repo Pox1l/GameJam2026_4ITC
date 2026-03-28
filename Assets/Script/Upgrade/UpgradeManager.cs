@@ -87,8 +87,14 @@ public class UpgradeManager : MonoBehaviour
     private void FinishUpgrade()
     {
         SoulManager.Instance.SaveSouls();
-        SoulManager.Instance.soulText.text = "Souls: " + SoulManager.Instance.totalSouls; // Update UI
-        SaveUpgrades();
+        SoulManager.Instance.soulText.text = "Souls: " + SoulManager.Instance.totalSouls;
+        SaveUpgrades(); // Tady se zapíše tvùj JSON
+
+        // PØIDÁNO: Okamžitá aktualizace textù v druhém menu
+        if (WeaponSelectionUI.Instance != null)
+        {
+            WeaponSelectionUI.Instance.UpdateWeaponStatsDisplay();
+        }
     }
 
     public int CalculateCost(int currentLevel)

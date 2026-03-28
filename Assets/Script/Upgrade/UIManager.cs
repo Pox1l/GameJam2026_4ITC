@@ -11,8 +11,6 @@ public class UIManager : MonoBehaviour
     [Header("Skripty pro aktualizaci")]
     public UpgradeUI upgradeUIScript;
 
-    private bool isAnyUIOpen = false;
-
     private void Awake()
     {
         if (Instance == null) Instance = this;
@@ -21,73 +19,78 @@ public class UIManager : MonoBehaviour
 
     private void Start()
     {
-        // Na zaèátku hry vždy otevøeme výbìr zbranì
+        // První spuštìní hry
         OpenWeaponSelection();
     }
 
-    private void Update()
+    // --- VOLÁNO PØI SMRTI ---
+    public void OpenUpgradeMenuOnDeath()
     {
-        // Otevírání upgradù pøes TAB
-        if (Input.GetKeyDown(KeyCode.Tab))
-        {
-            // Pokud je otevøený výbìr zbranì, TAB nic nedìlá
-            if (weaponSelectionPanel.activeSelf) return;
-
-            ToggleUpgradeMenu();
-        }
+        CloseAllUI();
+        upgradeCanvas.SetActive(true);
+        if (upgradeUIScript != null) upgradeUIScript.UpdateButtons();
+        SetGameState(false); // Pauza
     }
 
-    // --- VÝBÌR ZBRANÌ ---
+    // --- TLAÈÍTKO RESPAWN (v Upgrade panelu) ---
+    public void OnRespawnClicked()
+    {
+        // Nejdøív vyèistíme svìt, zatímco je ještì pauza
+        ClearLevel();
+
+        // Pøepneme na výbìr zbranì
+        upgradeCanvas.SetActive(false);
+        weaponSelectionPanel.SetActive(true);
+
+        // Aktualizujeme damage v textech, aby hráè vidìl, co si nakoupil
+        WeaponSelectionUI uiScript = weaponSelectionPanel.GetComponent<WeaponSelectionUI>();
+        if (uiScript != null) uiScript.UpdateWeaponStatsDisplay();
+    }
+
+    // --- FINÁLNÍ START (po vybrání zbranì) ---
+    public void StartNewRun()
+    {
+        if (PlayerStats.Instance != null)
+        {
+            PlayerStats.Instance.ResetPlayerForNewRun();
+        }
+
+        TimeManager tm = FindObjectOfType<TimeManager>();
+        if (tm != null) tm.ResetTimer();
+
+        CloseAllUI();
+        SetGameState(true); // Rozbìhnout hru
+    }
+
     public void OpenWeaponSelection()
     {
         CloseAllUI();
         weaponSelectionPanel.SetActive(true);
-        SetGameState(false); // Pauza
+        SetGameState(false);
     }
 
-    // --- UPGRADE MENU ---
-    public void ToggleUpgradeMenu()
-    {
-        bool newState = !upgradeCanvas.activeSelf;
-
-        if (newState)
-        {
-            CloseAllUI();
-            upgradeCanvas.SetActive(true);
-            if (upgradeUIScript != null) upgradeUIScript.UpdateButtons();
-            SetGameState(false); // Pauza
-        }
-        else
-        {
-            CloseAllUI();
-            SetGameState(true); // Hra bìží
-        }
-    }
-
-    // --- POMOCNÉ FUNKCE ---
     public void CloseAllUI()
     {
-        weaponSelectionPanel.SetActive(false);
-        upgradeCanvas.SetActive(false);
-        // Sem pøidáš další okna (Inventáø, Nastavení atd.)
+        if (weaponSelectionPanel != null) weaponSelectionPanel.SetActive(false);
+        if (upgradeCanvas != null) upgradeCanvas.SetActive(false);
     }
 
     public void SetGameState(bool isPlaying)
     {
-        isAnyUIOpen = !isPlaying;
         Time.timeScale = isPlaying ? 1f : 0f;
+        Cursor.lockState = isPlaying ? CursorLockMode.Confined : CursorLockMode.None;
+        Cursor.visible = true;
+    }
 
-        if (isPlaying)
+    private void ClearLevel()
+    {
+        // Vymaže enemy ze všech aktivních spawner zón
+        SpawnerZone2D[] spawners = FindObjectsOfType<SpawnerZone2D>();
+        foreach (var s in spawners)
         {
-            // HRÁÈ HRAJE: Myš je vidìt a mùže se volnì hýbat po oknì
-            Cursor.lockState = CursorLockMode.Confined; // Confined zajistí, že myš nevyjede z okna hry
-            Cursor.visible = true;
+            s.DespawnAllEnemies();
         }
-        else
-        {
-            // MENU JE OTEVØENÉ: Myš je úplnì volná pro UI
-           // Cursor.lockState = CursorLockMode.None;
-            Cursor.visible = true;
-        }
+
+        Debug.Log("Level vyèištìn od nepøátel.");
     }
 }

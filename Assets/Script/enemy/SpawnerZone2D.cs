@@ -119,7 +119,7 @@ public class SpawnerZone2D : MonoBehaviour
         }
     }
 
-    void DespawnAllEnemies()
+    public void DespawnAllEnemies()
     {
         foreach (GameObject enemy in activeEnemies)
         {
