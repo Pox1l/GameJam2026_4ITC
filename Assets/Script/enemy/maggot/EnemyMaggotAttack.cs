@@ -13,6 +13,7 @@ public class EnemyMaggotAttack : MonoBehaviour
     public float attackRange = 7f;
     public float stoppingDistance = 5f;
     public float attackCooldown = 2f;
+    public float force = 5f;
     public LayerMask whatIsTarget; // Musí obsahovat "Player" a "Obstacles"
 
     private Transform playerTransform;
@@ -104,7 +105,7 @@ public class EnemyMaggotAttack : MonoBehaviour
         {
             GameObject spit = Instantiate(projectilePrefab, firePoint.position, fixedPoint.rotation);
             spit.TryGetComponent<Rigidbody2D>(out Rigidbody2D rigidBody);
-            rigidBody.AddForce(playerTransform.position - firePoint.position, ForceMode2D.Impulse);
+            rigidBody.AddForce((playerTransform.position - firePoint.position)*force, ForceMode2D.Impulse);
         }
         FinishAttack();
     }
