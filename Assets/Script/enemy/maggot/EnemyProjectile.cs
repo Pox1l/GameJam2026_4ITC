@@ -18,7 +18,7 @@ public class EnemyProjectile : MonoBehaviour
     {
         if(collision.gameObject.TryGetComponent<PlayerStats>(out PlayerStats playerStats) && playerStats != null)
         {
-            playerStats.curentHealth -= damage;
+            playerStats.currentHealth -= damage;
             Destroy(gameObject);
         }
     }

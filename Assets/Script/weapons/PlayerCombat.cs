@@ -4,7 +4,7 @@ using UnityEngine;
 public class PlayerCombat : MonoBehaviour
 {
     [Header("Detekce Nepøátel")]
-    public LayerMask enemyLayers; // PØIDÁNO: Zde vybereš vrstvu "Enemy"
+    public LayerMask enemyLayers;
 
     [Header("Seznam Zbraní")]
     public List<WeaponData> weaponList;
@@ -33,14 +33,12 @@ public class PlayerCombat : MonoBehaviour
 
         HandleWeaponRotation();
 
-        if (Input.GetButtonDown("Fire1") && Time.time >= nextAttackTime)
+        if (Input.GetButton("Fire1") && Time.time >= nextAttackTime)
         {
             Attack();
             nextAttackTime = Time.time + currentWeaponData.attackCooldown;
         }
     }
-
-    
 
     void HandleWeaponRotation()
     {
@@ -67,7 +65,10 @@ public class PlayerCombat : MonoBehaviour
         if (index < 0 || index >= weaponList.Count) return;
 
         currentWeaponData = weaponList[index];
-        currentDamage = currentWeaponData.baseDamage;
+
+        // --- UPRAVENO: Naètení vylepšeného poškození z UpgradeManageru ---
+        string weaponType = currentWeaponData.isRanged ? "Bow" : "Sword";
+        currentDamage = UpgradeManager.Instance.GetUpgradedDamage(currentWeaponData.baseDamage, weaponType);
 
         if (spawnedWeaponObject != null)
         {
@@ -80,24 +81,24 @@ public class PlayerCombat : MonoBehaviour
             spawnedWeaponObject.transform.SetLocalPositionAndRotation(Vector3.zero, Quaternion.identity);
             weaponSpriteRenderer = spawnedWeaponObject.GetComponent<SpriteRenderer>();
 
-            // --- OPRAVENO: Pøedání hodnot do meèe (bez cooldownu) ---
+            // Pøedání poškození meèi (pokud ho má)
             if (!currentWeaponData.isRanged)
             {
                 if (spawnedWeaponObject.TryGetComponent(out MeleeDamageDealer meleeDealer))
                 {
                     meleeDealer.damageToDeal = (int)currentDamage;
                     meleeDealer.enemyLayers = enemyLayers;
-                    // Øádek s hitCooldown byl smazán
                 }
             }
         }
     }
 
-    // V metodì Attack() mùžeme smazat OverlapCircle logiku pro meè,
-    // protože meè už dává damage automaticky pouhým dotykem.
     void Attack()
     {
-        // Útok kliknutím platí už JEN pro luk
+        // Pøed útokem aktualizujeme damage (pro pøípad, že jsi právì nakoupil v menu)
+        string weaponType = currentWeaponData.isRanged ? "Bow" : "Sword";
+        currentDamage = UpgradeManager.Instance.GetUpgradedDamage(currentWeaponData.baseDamage, weaponType);
+
         if (currentWeaponData.isRanged)
         {
             if (currentWeaponData.projectilePrefab != null)
@@ -111,14 +112,23 @@ public class PlayerCombat : MonoBehaviour
 
                 if (proj.TryGetComponent(out Projectile dealer))
                 {
+                    // --- UPRAVENO: Šíp dostane vylepšenou damage ---
                     dealer.damageToDeal = (int)currentDamage;
                     dealer.enemyLayers = enemyLayers;
                 }
             }
         }
+        else
+        {
+            // Pokud je to meè, aktualizujeme damage i v MeleeDamageDealeru, 
+            // kdyby se zmìnila bìhem držení zbranì
+            if (spawnedWeaponObject != null && spawnedWeaponObject.TryGetComponent(out MeleeDamageDealer meleeDealer))
+            {
+                meleeDealer.damageToDeal = (int)currentDamage;
+            }
+        }
     }
 
-    // Vizualizace dosahu meèe v Editoru
     void OnDrawGizmosSelected()
     {
         if (firePoint == null || currentWeaponData == null) return;
