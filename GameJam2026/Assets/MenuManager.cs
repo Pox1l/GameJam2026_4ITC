@@ -5,31 +5,27 @@ using UnityEngine.SceneManagement;
 
 public class MenuManager : MonoBehaviour
 {
-    // Start is called before the first frame update
-    void Start()
+    // Zmìnìno ze string na int pro naèítání podle ID
+    IEnumerator LoadLevelAsync(int sceneId)
     {
-        
+        AsyncOperation loadOperation = SceneManager.LoadSceneAsync(sceneId);
+
+        // Zabrání pokraèování, dokud není scéna plnì naètena
+        while (!loadOperation.isDone)
+        {
+            yield return null;
+        }
     }
 
-    // Update is called once per frame
-    void Update()
+    // Tuto metodu teï mùžeš napojit na tlaèítko a pøedat jí èíslo scény
+    public void LoadLevelById(int sceneId)
     {
-        
-    }
-
-    IEnumerator LoadLevelAsync(string levelToLoad)
-    {
-        AsyncOperation loadOperation = SceneManager.LoadSceneAsync(levelToLoad);
-        yield return null;
-    }
-
-    public void levelToLoad(string levelToLoad)
-    {
-        StartCoroutine(LoadLevelAsync(levelToLoad));
+        StartCoroutine(LoadLevelAsync(sceneId));
     }
 
     public void Exit()
     {
         Application.Quit();
+        Debug.Log("Hra se vypíná."); // Pomùcka pro testování v Editoru, kde Quit() nic nedìlá
     }
 }
