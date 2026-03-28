@@ -1,0 +1,1315 @@
+fileFormatVersion: 2
+guid: 5e32ddea026ac4b4fac6c4f1ad2993a7
+TextureImporter:
+  internalIDToNameTable: []
+  externalObjects: {}
+  serializedVersion: 12
+  mipmaps:
+    mipMapMode: 0
+    enableMipMap: 0
+    sRGBTexture: 1
+    linearTexture: 0
+    fadeOut: 0
+    borderMipMap: 0
+    mipMapsPreserveCoverage: 0
+    alphaTestReferenceValue: 0.5
+    mipMapFadeDistanceStart: 1
+    mipMapFadeDistanceEnd: 3
+  bumpmap:
+    convertToNormalMap: 0
+    externalNormalMap: 0
+    heightScale: 0.25
+    normalMapFilter: 0
+    flipGreenChannel: 0
+  isReadable: 0
+  streamingMipmaps: 0
+  streamingMipmapsPriority: 0
+  vTOnly: 0
+  ignoreMipmapLimit: 0
+  grayScaleToAlpha: 0
+  generateCubemap: 6
+  cubemapConvolution: 0
+  seamlessCubemap: 0
+  textureFormat: 1
+  maxTextureSize: 2048
+  textureSettings:
+    serializedVersion: 2
+    filterMode: 0
+    aniso: 1
+    mipBias: 0
+    wrapU: 1
+    wrapV: 1
+    wrapW: 1
+  nPOTScale: 0
+  lightmap: 0
+  compressionQuality: 50
+  spriteMode: 2
+  spriteExtrude: 1
+  spriteMeshType: 1
+  alignment: 0
+  spritePivot: {x: 0.5, y: 0.5}
+  spritePixelsToUnits: 16
+  spriteBorder: {x: 0, y: 0, z: 0, w: 0}
+  spriteGenerateFallbackPhysicsShape: 1
+  alphaUsage: 1
+  alphaIsTransparency: 1
+  spriteTessellationDetail: -1
+  textureType: 8
+  textureShape: 1
+  singleChannelComponent: 0
+  flipbookRows: 1
+  flipbookColumns: 1
+  maxTextureSizeSet: 0
+  compressionQualitySet: 0
+  textureFormatSet: 0
+  ignorePngGamma: 0
+  applyGammaDecoding: 0
+  swizzle: 50462976
+  cookieLightType: 0
+  platformSettings:
+  - serializedVersion: 3
+    buildTarget: DefaultTexturePlatform
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 0
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 3
+    buildTarget: Standalone
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 3
+    buildTarget: Server
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  spriteSheet:
+    serializedVersion: 2
+    sprites:
+    - serializedVersion: 2
+      name: Klavesnice_0
+      rect:
+        serializedVersion: 2
+        x: 1
+        y: 98
+        width: 13
+        height: 12
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 8f081ab15490d574dbf43ce5cda2d891
+      internalID: -2092494616
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Klavesnice_1
+      rect:
+        serializedVersion: 2
+        x: 17
+        y: 98
+        width: 13
+        height: 12
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 96048d46418046f42bc11c20896585c2
+      internalID: -46547221
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Klavesnice_2
+      rect:
+        serializedVersion: 2
+        x: 33
+        y: 98
+        width: 13
+        height: 12
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 4d63cfc3b8bf511458db4249d7a833b5
+      internalID: 237049139
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Klavesnice_3
+      rect:
+        serializedVersion: 2
+        x: 49
+        y: 98
+        width: 13
+        height: 12
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 52fac9c67fc4c1f428e843ce44c901fd
+      internalID: 1395602728
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Klavesnice_4
+      rect:
+        serializedVersion: 2
+        x: 65
+        y: 98
+        width: 13
+        height: 12
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 02818c9758442ca4ca580a8ebf36132b
+      internalID: 265747218
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Klavesnice_5
+      rect:
+        serializedVersion: 2
+        x: 81
+        y: 98
+        width: 13
+        height: 12
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 9e96a850e8c0b33419c5a43ab46738b6
+      internalID: -1259186947
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Klavesnice_6
+      rect:
+        serializedVersion: 2
+        x: 97
+        y: 98
+        width: 13
+        height: 12
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 072d5af0d07b9db44a9be1ecdbe360a8
+      internalID: 84676516
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Klavesnice_7
+      rect:
+        serializedVersion: 2
+        x: 113
+        y: 98
+        width: 13
+        height: 12
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 5bde01a49079f4049b27efaa1fc4352b
+      internalID: 177159452
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Klavesnice_8
+      rect:
+        serializedVersion: 2
+        x: 1
+        y: 82
+        width: 13
+        height: 12
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 7210e37f8e1215c4397c658226af48da
+      internalID: -2019758730
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Klavesnice_9
+      rect:
+        serializedVersion: 2
+        x: 17
+        y: 82
+        width: 13
+        height: 12
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: f660bb08f57e5af4d949d71a26230d15
+      internalID: -460963969
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Klavesnice_10
+      rect:
+        serializedVersion: 2
+        x: 33
+        y: 82
+        width: 13
+        height: 12
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: f1561871285e24640b9d5ff22e673eb9
+      internalID: -954034965
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Klavesnice_11
+      rect:
+        serializedVersion: 2
+        x: 49
+        y: 82
+        width: 13
+        height: 12
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 87d243cf28b3825498fb4fc2f390f3d6
+      internalID: -148784352
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Klavesnice_12
+      rect:
+        serializedVersion: 2
+        x: 65
+        y: 82
+        width: 13
+        height: 12
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: d4afc2cb1cc38a442b435a8640dc6fac
+      internalID: -2053059594
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Klavesnice_13
+      rect:
+        serializedVersion: 2
+        x: 81
+        y: 82
+        width: 13
+        height: 12
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 16dc19788d4651e418df6772cfc1106f
+      internalID: -1045639028
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Klavesnice_14
+      rect:
+        serializedVersion: 2
+        x: 97
+        y: 82
+        width: 13
+        height: 12
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: d8bf0423d5e4e864c970e1f918434454
+      internalID: 1202408985
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Klavesnice_15
+      rect:
+        serializedVersion: 2
+        x: 113
+        y: 82
+        width: 13
+        height: 12
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 9e98773caa49249468ebfcb18c81ed95
+      internalID: -491173319
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Klavesnice_16
+      rect:
+        serializedVersion: 2
+        x: 1
+        y: 66
+        width: 13
+        height: 12
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 238f42c05b50e7a45aa1031db88084df
+      internalID: 1374996885
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Klavesnice_17
+      rect:
+        serializedVersion: 2
+        x: 17
+        y: 66
+        width: 13
+        height: 12
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 0fee69d5bbbdf434aa9a73744ec39b99
+      internalID: -1816277371
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Klavesnice_18
+      rect:
+        serializedVersion: 2
+        x: 33
+        y: 66
+        width: 13
+        height: 12
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 708d0b10d7ca7094598faca7aacc3353
+      internalID: -222976875
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Klavesnice_19
+      rect:
+        serializedVersion: 2
+        x: 49
+        y: 66
+        width: 13
+        height: 12
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: b85b73fbd8212fc40bef904f82bbc211
+      internalID: -978842230
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Klavesnice_20
+      rect:
+        serializedVersion: 2
+        x: 65
+        y: 66
+        width: 13
+        height: 12
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: a3e26ea19aae0214a8108bda8338f85d
+      internalID: 1251813673
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Klavesnice_21
+      rect:
+        serializedVersion: 2
+        x: 81
+        y: 66
+        width: 13
+        height: 12
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 7f63bbf7587d2ba47b19560607c12823
+      internalID: 1998043005
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Klavesnice_22
+      rect:
+        serializedVersion: 2
+        x: 97
+        y: 66
+        width: 13
+        height: 12
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: a457a4df72f63144c946d59514c782ff
+      internalID: -655722408
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Klavesnice_23
+      rect:
+        serializedVersion: 2
+        x: 113
+        y: 66
+        width: 13
+        height: 12
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 4a36a1a047d441948b4f1b731143f616
+      internalID: -1718592983
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Klavesnice_24
+      rect:
+        serializedVersion: 2
+        x: 1
+        y: 50
+        width: 13
+        height: 12
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 8ea5512149c2a604da40881410c7d0a8
+      internalID: 1283579020
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Klavesnice_25
+      rect:
+        serializedVersion: 2
+        x: 17
+        y: 50
+        width: 13
+        height: 12
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 3b5a13e9c6f1f104784de185dbf0cfea
+      internalID: 1312087269
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Klavesnice_26
+      rect:
+        serializedVersion: 2
+        x: 33
+        y: 50
+        width: 13
+        height: 12
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 9c8d616c534fe6345b126b3a8bdf5bb3
+      internalID: -1655293047
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Klavesnice_27
+      rect:
+        serializedVersion: 2
+        x: 49
+        y: 50
+        width: 13
+        height: 12
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 95b5e892d10da074a8298fbc2217ad5e
+      internalID: -1985217240
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Klavesnice_28
+      rect:
+        serializedVersion: 2
+        x: 65
+        y: 50
+        width: 13
+        height: 12
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: c5306aa0d12a72c4ab866b4ddad70625
+      internalID: 1168799798
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Klavesnice_29
+      rect:
+        serializedVersion: 2
+        x: 81
+        y: 50
+        width: 13
+        height: 12
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: ea53ca2e93282f943a80121b863da3fa
+      internalID: 2064887144
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Klavesnice_30
+      rect:
+        serializedVersion: 2
+        x: 97
+        y: 50
+        width: 13
+        height: 12
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 78df23e469a208b4caf1dfd602799658
+      internalID: -291524063
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Klavesnice_31
+      rect:
+        serializedVersion: 2
+        x: 113
+        y: 50
+        width: 13
+        height: 12
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 03be546f27d6fe3439b6bb8d6fbaf948
+      internalID: -493929597
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Klavesnice_32
+      rect:
+        serializedVersion: 2
+        x: 1
+        y: 34
+        width: 13
+        height: 12
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 1db9348d2b4a29c47ac26447314da0af
+      internalID: 281668071
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Klavesnice_33
+      rect:
+        serializedVersion: 2
+        x: 17
+        y: 34
+        width: 13
+        height: 12
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: c5d05ccda0fe7cb42a9ede57b8dad825
+      internalID: 137044439
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Klavesnice_34
+      rect:
+        serializedVersion: 2
+        x: 33
+        y: 34
+        width: 13
+        height: 12
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 7555677deaffe6340bf5e530cb5dc4ac
+      internalID: -1348658239
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Klavesnice_35
+      rect:
+        serializedVersion: 2
+        x: 49
+        y: 34
+        width: 13
+        height: 12
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 921d1a50af7adcc49844bcca5f82a544
+      internalID: 1241006679
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Klavesnice_36
+      rect:
+        serializedVersion: 2
+        x: 65
+        y: 34
+        width: 13
+        height: 12
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 2f9ed25256073a44d899ccdb7e1af703
+      internalID: -1512787343
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Klavesnice_37
+      rect:
+        serializedVersion: 2
+        x: 81
+        y: 34
+        width: 13
+        height: 12
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 65eb6c6016ac4ca4ca32bca0b16b2eb7
+      internalID: 774147848
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Klavesnice_38
+      rect:
+        serializedVersion: 2
+        x: 97
+        y: 34
+        width: 13
+        height: 12
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 167b55e3a58dea14998dcacb2fcd564e
+      internalID: -110861480
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Klavesnice_39
+      rect:
+        serializedVersion: 2
+        x: 113
+        y: 34
+        width: 13
+        height: 12
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: b5f6722065c49b549a6b254935671ba9
+      internalID: -1541736769
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Klavesnice_40
+      rect:
+        serializedVersion: 2
+        x: 1
+        y: 18
+        width: 13
+        height: 12
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: f69eb0be2f5d4d449b31d5ce21e70edb
+      internalID: -2076138682
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Klavesnice_41
+      rect:
+        serializedVersion: 2
+        x: 17
+        y: 18
+        width: 13
+        height: 12
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 3964a9a9cb56a224fad51cf7a683f307
+      internalID: -146242550
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Klavesnice_42
+      rect:
+        serializedVersion: 2
+        x: 33
+        y: 18
+        width: 13
+        height: 12
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 0360b75e88314f145816aa0f3013d562
+      internalID: 1416688634
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Klavesnice_43
+      rect:
+        serializedVersion: 2
+        x: 49
+        y: 18
+        width: 13
+        height: 12
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: e2899ad0ecd1fb4499b795f70c2794d0
+      internalID: 162843629
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Klavesnice_44
+      rect:
+        serializedVersion: 2
+        x: 65
+        y: 18
+        width: 13
+        height: 12
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 17e4f079cc0310c40bae74f02f6d56b7
+      internalID: -548387109
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Klavesnice_45
+      rect:
+        serializedVersion: 2
+        x: 81
+        y: 18
+        width: 13
+        height: 12
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 9372c1b9ef7056c4a8d422bda1b239e3
+      internalID: -2034219957
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Klavesnice_46
+      rect:
+        serializedVersion: 2
+        x: 97
+        y: 18
+        width: 13
+        height: 12
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 540bc79eb4e7f70468721d14293fad78
+      internalID: -353485082
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Klavesnice_47
+      rect:
+        serializedVersion: 2
+        x: 113
+        y: 18
+        width: 13
+        height: 12
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 14f0363551594fa4880c040fd19e40ec
+      internalID: 206638253
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Klavesnice_48
+      rect:
+        serializedVersion: 2
+        x: 1
+        y: 2
+        width: 13
+        height: 12
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 2c6296623b6ca784c82365a17f39770c
+      internalID: 453428722
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Klavesnice_49
+      rect:
+        serializedVersion: 2
+        x: 17
+        y: 2
+        width: 13
+        height: 12
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: d4f6cb9ff1f38bb49b4166fcfbd8a876
+      internalID: -588048220
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Klavesnice_50
+      rect:
+        serializedVersion: 2
+        x: 33
+        y: 2
+        width: 13
+        height: 12
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: f33fe7dca5e86dc449be317183a5326e
+      internalID: -1841472139
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Klavesnice_51
+      rect:
+        serializedVersion: 2
+        x: 49
+        y: 2
+        width: 13
+        height: 12
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 517257e6694ced647abf074021d72816
+      internalID: -1554623650
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Klavesnice_52
+      rect:
+        serializedVersion: 2
+        x: 65
+        y: 2
+        width: 13
+        height: 12
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 808292898188421488dfe243b68dbe26
+      internalID: -566644045
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Klavesnice_53
+      rect:
+        serializedVersion: 2
+        x: 81
+        y: 2
+        width: 13
+        height: 12
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 5ab402d41e17c7248815a6bdd66640b2
+      internalID: 1276062341
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    outline: []
+    physicsShape: []
+    bones: []
+    spriteID: 5e97eb03825dee720800000000000000
+    internalID: 0
+    vertices: []
+    indices: 
+    edges: []
+    weights: []
+    secondaryTextures: []
+    nameFileIdTable:
+      Klavesnice_0: -2092494616
+      Klavesnice_1: -46547221
+      Klavesnice_10: -954034965
+      Klavesnice_11: -148784352
+      Klavesnice_12: -2053059594
+      Klavesnice_13: -1045639028
+      Klavesnice_14: 1202408985
+      Klavesnice_15: -491173319
+      Klavesnice_16: 1374996885
+      Klavesnice_17: -1816277371
+      Klavesnice_18: -222976875
+      Klavesnice_19: -978842230
+      Klavesnice_2: 237049139
+      Klavesnice_20: 1251813673
+      Klavesnice_21: 1998043005
+      Klavesnice_22: -655722408
+      Klavesnice_23: -1718592983
+      Klavesnice_24: 1283579020
+      Klavesnice_25: 1312087269
+      Klavesnice_26: -1655293047
+      Klavesnice_27: -1985217240
+      Klavesnice_28: 1168799798
+      Klavesnice_29: 2064887144
+      Klavesnice_3: 1395602728
+      Klavesnice_30: -291524063
+      Klavesnice_31: -493929597
+      Klavesnice_32: 281668071
+      Klavesnice_33: 137044439
+      Klavesnice_34: -1348658239
+      Klavesnice_35: 1241006679
+      Klavesnice_36: -1512787343
+      Klavesnice_37: 774147848
+      Klavesnice_38: -110861480
+      Klavesnice_39: -1541736769
+      Klavesnice_4: 265747218
+      Klavesnice_40: -2076138682
+      Klavesnice_41: -146242550
+      Klavesnice_42: 1416688634
+      Klavesnice_43: 162843629
+      Klavesnice_44: -548387109
+      Klavesnice_45: -2034219957
+      Klavesnice_46: -353485082
+      Klavesnice_47: 206638253
+      Klavesnice_48: 453428722
+      Klavesnice_49: -588048220
+      Klavesnice_5: -1259186947
+      Klavesnice_50: -1841472139
+      Klavesnice_51: -1554623650
+      Klavesnice_52: -566644045
+      Klavesnice_53: 1276062341
+      Klavesnice_6: 84676516
+      Klavesnice_7: 177159452
+      Klavesnice_8: -2019758730
+      Klavesnice_9: -460963969
+  mipmapLimitGroupName: 
+  pSDRemoveMatte: 0
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
