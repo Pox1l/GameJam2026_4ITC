@@ -87,9 +87,21 @@ MonoBehaviour:
         - globalObjectIdString: GlobalObjectId_V1-2-291dbf1c2c8d27544acc3c5558828f91-599575767-0
         - globalObjectIdString: GlobalObjectId_V1-2-291dbf1c2c8d27544acc3c5558828f91-510174213-0
         - globalObjectIdString: GlobalObjectId_V1-2-291dbf1c2c8d27544acc3c5558828f91-1217119606-0
+        - globalObjectIdString: GlobalObjectId_V1-2-291dbf1c2c8d27544acc3c5558828f91-797947574-0
+        - globalObjectIdString: GlobalObjectId_V1-2-291dbf1c2c8d27544acc3c5558828f91-1986102021-0
+        - globalObjectIdString: GlobalObjectId_V1-2-291dbf1c2c8d27544acc3c5558828f91-1471419048-0
+        - globalObjectIdString: GlobalObjectId_V1-2-291dbf1c2c8d27544acc3c5558828f91-2062992705-0
+        - globalObjectIdString: GlobalObjectId_V1-2-291dbf1c2c8d27544acc3c5558828f91-475143887-0
+        - globalObjectIdString: GlobalObjectId_V1-2-291dbf1c2c8d27544acc3c5558828f91-1603944948-0
+        - globalObjectIdString: GlobalObjectId_V1-2-291dbf1c2c8d27544acc3c5558828f91-1837590553-0
+        - globalObjectIdString: GlobalObjectId_V1-2-291dbf1c2c8d27544acc3c5558828f91-1545793067-0
         values:
         - colorIndex: 0
-          iconNameOrGuid: ReflectionProbe Icon
+          iconNameOrGuid: AvatarMask On Icon
+          isIconRecursive: 0
+          isColorRecursive: 0
+        - colorIndex: 2
+          iconNameOrGuid: CapsuleCollider Icon
           isIconRecursive: 0
           isColorRecursive: 0
         - colorIndex: 2
@@ -101,15 +113,43 @@ MonoBehaviour:
           isIconRecursive: 0
           isColorRecursive: 0
         - colorIndex: 2
-          iconNameOrGuid: 
-          isIconRecursive: 0
-          isColorRecursive: 0
-        - colorIndex: 2
-          iconNameOrGuid: 
+          iconNameOrGuid: CapsuleCollider Icon
           isIconRecursive: 0
           isColorRecursive: 0
         - colorIndex: 0
           iconNameOrGuid: Canvas Icon
+          isIconRecursive: 0
+          isColorRecursive: 0
+        - colorIndex: 0
+          iconNameOrGuid: EventSystem Icon
+          isIconRecursive: 0
+          isColorRecursive: 0
+        - colorIndex: 0
+          iconNameOrGuid: MeshCollider Icon
+          isIconRecursive: 0
+          isColorRecursive: 0
+        - colorIndex: 0
+          iconNameOrGuid: Camera Icon
+          isIconRecursive: 0
+          isColorRecursive: 0
+        - colorIndex: 0
+          iconNameOrGuid: Camera Icon
+          isIconRecursive: 0
+          isColorRecursive: 0
+        - colorIndex: 0
+          iconNameOrGuid: Canvas Icon
+          isIconRecursive: 0
+          isColorRecursive: 0
+        - colorIndex: 0
+          iconNameOrGuid: Camera Icon
+          isIconRecursive: 0
+          isColorRecursive: 0
+        - colorIndex: 0
+          iconNameOrGuid: NavMeshAgent Icon
+          isIconRecursive: 0
+          isColorRecursive: 0
+        - colorIndex: 0
+          iconNameOrGuid: BoxCollider Icon
           isIconRecursive: 0
           isColorRecursive: 0
   bookmarks: []
