@@ -86,7 +86,7 @@ public class UIManager : MonoBehaviour
         else
         {
             // MENU JE OTEVØENÉ: Myš je úplnì volná pro UI
-            Cursor.lockState = CursorLockMode.None;
+           // Cursor.lockState = CursorLockMode.None;
             Cursor.visible = true;
         }
     }
