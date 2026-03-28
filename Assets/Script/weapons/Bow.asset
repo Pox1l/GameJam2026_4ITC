@@ -12,8 +12,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2684741daebbb87488771613bfd3b9ba, type: 3}
   m_Name: Bow
   m_EditorClassIdentifier: 
-  weaponName: 
-  visualPrefab: {fileID: 0}
-  isRanged: 0
-  baseDamage: 0
-  attackCooldown: 0.5
+  weaponName: Bow
+  visualPrefab: {fileID: 7257248350973800601, guid: 75207be8eece91543bba069465741163, type: 3}
+  isRanged: 1
+  baseDamage: 5
+  attackCooldown: 0.2

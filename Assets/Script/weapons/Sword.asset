@@ -12,8 +12,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2684741daebbb87488771613bfd3b9ba, type: 3}
   m_Name: Sword
   m_EditorClassIdentifier: 
-  weaponName: 
-  visualPrefab: {fileID: 0}
+  weaponName: Sword
+  visualPrefab: {fileID: 1786228723309331451, guid: f8acadd6b9db111459ec76778c43f39e, type: 3}
   isRanged: 0
-  baseDamage: 0
+  baseDamage: 10
   attackCooldown: 0.5
