@@ -47,6 +47,7 @@ MonoBehaviour:
         - globalObjectIdString: GlobalObjectId_V1-2-cbc04ead01e97bb4097d7338b5de5df5-706172271-0
         - globalObjectIdString: GlobalObjectId_V1-2-cbc04ead01e97bb4097d7338b5de5df5-1199960697-0
         - globalObjectIdString: GlobalObjectId_V1-2-cbc04ead01e97bb4097d7338b5de5df5-1640805242-0
+        - globalObjectIdString: GlobalObjectId_V1-2-cbc04ead01e97bb4097d7338b5de5df5-595773321-0
         values:
         - colorIndex: 3
           iconNameOrGuid: Canvas Icon
@@ -89,7 +90,7 @@ MonoBehaviour:
           isIconRecursive: 0
           isColorRecursive: 0
         - colorIndex: 0
-          iconNameOrGuid: Folder Icon
+          iconNameOrGuid: MeshCollider Icon
           isIconRecursive: 0
           isColorRecursive: 0
         - colorIndex: 0
@@ -102,6 +103,10 @@ MonoBehaviour:
           isColorRecursive: 0
         - colorIndex: 8
           iconNameOrGuid: 
+          isIconRecursive: 0
+          isColorRecursive: 0
+        - colorIndex: 0
+          iconNameOrGuid: AvatarMask On Icon
           isIconRecursive: 0
           isColorRecursive: 0
     - goDatas_byGlobalId:
