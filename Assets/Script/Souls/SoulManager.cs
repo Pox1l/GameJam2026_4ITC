@@ -21,8 +21,7 @@ public class SoulManager : MonoBehaviour
         if (Instance == null)
         {
             Instance = this;
-            // Podobné nastavení jako u tvého PlayerDataManageru
-            savePath = ProfileManager.GetSavePath("souls_save.json");
+            savePath = Path.Combine(Application.persistentDataPath, "souls_save.json");
             LoadSouls();
         }
         else
@@ -46,7 +45,7 @@ public class SoulManager : MonoBehaviour
     {
         totalSouls += amount;
         UpdateUI();
-        SaveSouls(); // Uložit pøi zmìnì
+        SaveSouls();
     }
 
     public void AddPassiveSouls()
@@ -54,9 +53,7 @@ public class SoulManager : MonoBehaviour
         int gain = Mathf.RoundToInt(passiveAmount * multiplier);
         totalSouls += gain;
         UpdateUI();
-        SaveSouls(); // Uložit pøi zmìnì
-
-        Debug.Log($"<color=cyan>SoulManager:</color> Pøièteno {gain} pasivních duší. Celkem: {totalSouls}");
+        SaveSouls();
     }
 
     private void UpdateUI()
@@ -67,35 +64,20 @@ public class SoulManager : MonoBehaviour
         }
     }
 
-    // --- LOGIKA UKLÁDÁNÍ ---
-
     public void SaveSouls()
     {
-        SoulSaveData data = new SoulSaveData();
-        data.totalSouls = totalSouls;
-
+        SoulSaveData data = new SoulSaveData { totalSouls = totalSouls };
         string json = JsonUtility.ToJson(data, true);
         File.WriteAllText(savePath, json);
-
-        // Volitelné: Bliknutí ikony uložení (pokud ji používáš i pro duše)
-        if (SaveVisual.instance != null) SaveVisual.ReportSave();
     }
 
     public void LoadSouls()
     {
         if (File.Exists(savePath))
         {
-            try
-            {
-                string json = File.ReadAllText(savePath);
-                SoulSaveData data = JsonUtility.FromJson<SoulSaveData>(json);
-                totalSouls = data.totalSouls;
-            }
-            catch
-            {
-                Debug.LogWarning("Soul save file corrupted.");
-                totalSouls = 0;
-            }
+            string json = File.ReadAllText(savePath);
+            SoulSaveData data = JsonUtility.FromJson<SoulSaveData>(json);
+            totalSouls = data.totalSouls;
         }
         else
         {
@@ -104,7 +86,6 @@ public class SoulManager : MonoBehaviour
     }
 }
 
-// Pomocná tøída pro JSON
 [System.Serializable]
 public class SoulSaveData
 {
