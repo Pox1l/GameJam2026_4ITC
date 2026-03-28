@@ -341,7 +341,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 249009027}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: FirePoint
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -482,7 +482,7 @@ GameObject:
   - component: {fileID: 510174215}
   - component: {fileID: 510174214}
   - component: {fileID: 510174217}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: Boss
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -746,7 +746,8 @@ GameObject:
   - component: {fileID: 647317220}
   - component: {fileID: 647317218}
   - component: {fileID: 647317219}
-  m_Layer: 0
+  - component: {fileID: 647317221}
+  m_Layer: 7
   m_Name: Player
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -895,13 +896,61 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: baa80aff692cabf499e7150394241003, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  enemyLayers:
+    serializedVersion: 2
+    m_Bits: 64
   weaponList:
   - {fileID: 11400000, guid: 7e6e4852a7699fc4b85a28bd3cd16080, type: 2}
   - {fileID: 11400000, guid: f500c4551d5212446a6229c6537f06ba, type: 2}
   fixedPoint: {fileID: 665476595}
   firePoint: {fileID: 1099104081}
   orbitDistance: 1
-  currentWeaponData: {fileID: 11400000, guid: f500c4551d5212446a6229c6537f06ba, type: 2}
+  currentWeaponData: {fileID: 0}
+--- !u!61 &647317221
+BoxCollider2D:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 647317214}
+  m_Enabled: 1
+  m_Density: 1
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_ForceSendLayers:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_ForceReceiveLayers:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_ContactCaptureLayers:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_CallbackLayers:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_IsTrigger: 0
+  m_UsedByEffector: 0
+  m_UsedByComposite: 0
+  m_Offset: {x: -0.0036363602, y: -0.72365093}
+  m_SpriteTilingProperty:
+    border: {x: 0, y: 0, z: 0, w: 0}
+    pivot: {x: 0.5, y: 0.5}
+    oldSize: {x: 2, y: 2}
+    newSize: {x: 1, y: 1}
+    adaptiveTilingThreshold: 0.5
+    drawMode: 0
+    adaptiveTiling: 0
+  m_AutoTiling: 0
+  serializedVersion: 2
+  m_Size: {x: 0.77088356, y: 0.55269814}
+  m_EdgeRadius: 0
 --- !u!1 &665476594
 GameObject:
   m_ObjectHideFlags: 0
@@ -911,7 +960,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 665476595}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: FixedPoint
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1017,7 +1066,19 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 725942652}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 1217119611}
+        m_TargetAssemblyTypeName: WeaponSelectionUI, Assembly-CSharp
+        m_MethodName: ChooseWeapon
+        m_Mode: 3
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 1
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!114 &725942652
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1267,7 +1328,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1099104081}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: FirePoint
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1298,7 +1359,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1167427277}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: FirePoint
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1364,6 +1425,7 @@ GameObject:
   - component: {fileID: 1217119609}
   - component: {fileID: 1217119608}
   - component: {fileID: 1217119607}
+  - component: {fileID: 1217119611}
   m_Layer: 5
   m_Name: SelectCanvas
   m_TagString: Untagged
@@ -1454,6 +1516,20 @@ RectTransform:
   m_AnchoredPosition: {x: 0, y: 0}
   m_SizeDelta: {x: 0, y: 0}
   m_Pivot: {x: 0, y: 0}
+--- !u!114 &1217119611
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1217119606}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 36b614f6794ef8042bc83680d6eef2a3, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  playerCombat: {fileID: 647317220}
+  selectionPanel: {fileID: 1997348836}
 --- !u!1 &1223798194
 GameObject:
   m_ObjectHideFlags: 0
@@ -1494,7 +1570,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1259221976}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: FixedPoint
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1835,7 +1911,19 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 1864102554}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 1217119611}
+        m_TargetAssemblyTypeName: WeaponSelectionUI, Assembly-CSharp
+        m_MethodName: ChooseWeapon
+        m_Mode: 3
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!114 &1864102554
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2020,7 +2108,7 @@ GameObject:
   - component: {fileID: 1934689320}
   - component: {fileID: 1934689319}
   - component: {fileID: 1934689322}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: Enemy
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -2056,7 +2144,7 @@ CircleCollider2D:
   m_CallbackLayers:
     serializedVersion: 2
     m_Bits: 4294967295
-  m_IsTrigger: 1
+  m_IsTrigger: 0
   m_UsedByEffector: 0
   m_UsedByComposite: 0
   m_Offset: {x: 0, y: 0}
@@ -2152,7 +2240,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1935538504}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: FixedPoint
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -2192,7 +2280,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!224 &1997348837
 RectTransform:
   m_ObjectHideFlags: 0

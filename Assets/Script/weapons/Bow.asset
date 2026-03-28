@@ -17,3 +17,6 @@ MonoBehaviour:
   isRanged: 1
   baseDamage: 5
   attackCooldown: 0.2
+  attackRange: 1
+  projectilePrefab: {fileID: 2809184416496852467, guid: bbd4a8d409ae93a4fb282345c1a4dc9d, type: 3}
+  projectileSpeed: 15

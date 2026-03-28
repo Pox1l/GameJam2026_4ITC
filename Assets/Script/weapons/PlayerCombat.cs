@@ -3,13 +3,16 @@ using UnityEngine;
 
 public class PlayerCombat : MonoBehaviour
 {
+    [Header("Detekce Nepøátel")]
+    public LayerMask enemyLayers; // PØIDÁNO: Zde vybereš vrstvu "Enemy"
+
     [Header("Seznam Zbraní")]
     public List<WeaponData> weaponList;
 
     [Header("Nastavení Ruky")]
-    public Transform fixedPoint; // Støed otáèení (hráè)
-    public Transform firePoint;  // Obíhající bod (zbraò)
-    public float orbitDistance = 1f; // Vzdálenost zbranì od støedu
+    public Transform fixedPoint;
+    public Transform firePoint;
+    public float orbitDistance = 1f;
 
     [Header("Aktuální Výbava (Jen pro ètení)")]
     [SerializeField] private WeaponData currentWeaponData;
@@ -21,23 +24,41 @@ public class PlayerCombat : MonoBehaviour
 
     void Start()
     {
-        // ZMÌNÌNO: Hráè na zaèátku nemá zbraò. 
-        // Èeká se na výbìr z UI, které zavolá EquipWeaponByIndex.
         currentWeaponData = null;
     }
 
     void Update()
     {
-        // Pokud hráè ještì nemá zbraò, kód se pøeruší (neotáèí se ruka, nelze útoèit)
         if (currentWeaponData == null) return;
 
         HandleWeaponRotation();
 
-        // Útok
         if (Input.GetButtonDown("Fire1") && Time.time >= nextAttackTime)
         {
             Attack();
             nextAttackTime = Time.time + currentWeaponData.attackCooldown;
+        }
+    }
+
+    
+
+    void HandleWeaponRotation()
+    {
+        Vector3 mousePos = Camera.main.ScreenToWorldPoint(Input.mousePosition);
+        mousePos.z = 0f;
+
+        Vector2 aimDirection = (mousePos - fixedPoint.position).normalized;
+        firePoint.position = (Vector2)fixedPoint.position + aimDirection * orbitDistance;
+
+        float angle = Mathf.Atan2(aimDirection.y, aimDirection.x) * Mathf.Rad2Deg;
+        firePoint.rotation = Quaternion.Euler(0, 0, angle);
+
+        if (weaponSpriteRenderer != null)
+        {
+            if (angle >= -90f && angle <= 90f)
+                firePoint.localScale = Vector3.one;
+            else
+                firePoint.localScale = new Vector3(1, -1, 1);
         }
     }
 
@@ -58,39 +79,53 @@ public class PlayerCombat : MonoBehaviour
             spawnedWeaponObject = Instantiate(currentWeaponData.visualPrefab, firePoint);
             spawnedWeaponObject.transform.SetLocalPositionAndRotation(Vector3.zero, Quaternion.identity);
             weaponSpriteRenderer = spawnedWeaponObject.GetComponent<SpriteRenderer>();
+
+            // --- OPRAVENO: Pøedání hodnot do meèe (bez cooldownu) ---
+            if (!currentWeaponData.isRanged)
+            {
+                if (spawnedWeaponObject.TryGetComponent(out MeleeDamageDealer meleeDealer))
+                {
+                    meleeDealer.damageToDeal = (int)currentDamage;
+                    meleeDealer.enemyLayers = enemyLayers;
+                    // Øádek s hitCooldown byl smazán
+                }
+            }
         }
     }
 
-    void HandleWeaponRotation()
-    {
-        Vector3 mousePos = Camera.main.ScreenToWorldPoint(Input.mousePosition);
-        mousePos.z = 0f;
-
-        // 1. Spoèítání smìru od støedu k myši
-        Vector2 aimDirection = (mousePos - fixedPoint.position).normalized;
-
-        // 2. Nastavení pozice firePointu (krouží kolem fixedPointu)
-        firePoint.position = (Vector2)fixedPoint.position + aimDirection * orbitDistance;
-
-        // 3. Samotné natoèení firePointu na myš
-        float angle = Mathf.Atan2(aimDirection.y, aimDirection.x) * Mathf.Rad2Deg;
-        firePoint.rotation = Quaternion.Euler(0, 0, angle);
-
-        // 4. Pøevrácení zbranì pøi pohledu doleva
-        if (weaponSpriteRenderer != null)
-        {
-            if (angle >= -90f && angle <= 90f)
-                firePoint.localScale = Vector3.one;
-            else
-                firePoint.localScale = new Vector3(1, -1, 1);
-        }
-    }
-
+    // V metodì Attack() mùžeme smazat OverlapCircle logiku pro meè,
+    // protože meè už dává damage automaticky pouhým dotykem.
     void Attack()
     {
-        Debug.Log("Útok zbraní " + currentWeaponData.weaponName + " za " + currentDamage);
+        // Útok kliknutím platí už JEN pro luk
+        if (currentWeaponData.isRanged)
+        {
+            if (currentWeaponData.projectilePrefab != null)
+            {
+                GameObject proj = Instantiate(currentWeaponData.projectilePrefab, firePoint.position, firePoint.rotation);
 
-        if (currentWeaponData.isRanged) { /* Luk */ }
-        else { /* Meè */ }
+                if (proj.TryGetComponent(out Rigidbody2D rb))
+                {
+                    rb.velocity = firePoint.right * currentWeaponData.projectileSpeed;
+                }
+
+                if (proj.TryGetComponent(out Projectile dealer))
+                {
+                    dealer.damageToDeal = (int)currentDamage;
+                    dealer.enemyLayers = enemyLayers;
+                }
+            }
+        }
+    }
+
+    // Vizualizace dosahu meèe v Editoru
+    void OnDrawGizmosSelected()
+    {
+        if (firePoint == null || currentWeaponData == null) return;
+        if (!currentWeaponData.isRanged)
+        {
+            Gizmos.color = Color.red;
+            Gizmos.DrawWireSphere(firePoint.position, currentWeaponData.attackRange);
+        }
     }
 }
