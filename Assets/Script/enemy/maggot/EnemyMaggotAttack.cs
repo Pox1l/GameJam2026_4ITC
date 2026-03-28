@@ -97,7 +97,9 @@ public class EnemyMaggotAttack : MonoBehaviour
     {
         if (projectilePrefab != null && firePoint != null)
         {
-            Instantiate(projectilePrefab, firePoint.position, fixedPoint.rotation);
+            GameObject spit = Instantiate(projectilePrefab, firePoint.position, fixedPoint.rotation);
+            spit.TryGetComponent<Rigidbody2D>(out Rigidbody2D rigidBody);
+            rigidBody.AddForce(playerTransform.position, ForceMode2D.Impulse);
         }
         FinishAttack();
     }
