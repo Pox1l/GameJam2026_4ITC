@@ -464,6 +464,7 @@ GameObject:
   - component: {fileID: 275176402}
   - component: {fileID: 275176405}
   - component: {fileID: 275176401}
+  - component: {fileID: 275176408}
   - component: {fileID: 275176407}
   - component: {fileID: 275176400}
   - component: {fileID: 275176399}
@@ -832,6 +833,20 @@ MonoBehaviour:
   whatIsTarget:
     serializedVersion: 2
     m_Bits: 128
+--- !u!114 &275176408
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 275176395}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4a461743136e3614d801af1526c5e4d4, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  essencePrefab: {fileID: 0}
+  amount: 1
 --- !u!1 &283548467
 GameObject:
   m_ObjectHideFlags: 0
@@ -19018,7 +19033,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!58 &510174214
 CircleCollider2D:
   m_ObjectHideFlags: 0
@@ -38671,6 +38686,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   playerCombat: {fileID: 647317220}
   selectionPanel: {fileID: 1997348836}
+  WeaponSprites: []
+  WeaponImage: {fileID: 0}
 --- !u!1 &1259221975
 GameObject:
   m_ObjectHideFlags: 0
@@ -40390,5 +40407,5 @@ SceneRoots:
   - {fileID: 1603944949}
   - {fileID: 1837590554}
   - {fileID: 475143888}
-  - {fileID: 1545793068}
   - {fileID: 1986102023}
+  - {fileID: 1545793068}
