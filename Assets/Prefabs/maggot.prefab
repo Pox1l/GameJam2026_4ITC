@@ -68,7 +68,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 5182263393005179703}
   serializedVersion: 2
-  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 8.16, y: 15.61, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
@@ -117,7 +117,7 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 5
-  m_Sprite: {fileID: -1019270886, guid: a097e8fe0952fd145b2e44ad04798003, type: 3}
+  m_Sprite: {fileID: -1064060896, guid: c666b4d3ca170b8429a1889c3aee67fd, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
@@ -190,7 +190,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4a461743136e3614d801af1526c5e4d4, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  essencePrefab: {fileID: 5655326981580028128, guid: 924374be5efe6b74d9c20e9e806728a5, type: 3}
+  essencePrefab: {fileID: 4866929244689541242, guid: 82de49efb4e92d043927f4906711ea58, type: 3}
   amount: 1
 --- !u!114 &4352432470207054484
 MonoBehaviour:
@@ -209,7 +209,9 @@ MonoBehaviour:
   firePoint: {fileID: 4833859124204225864}
   animator: {fileID: 8873663147207411950}
   attackRange: 6
+  stoppingDistance: 5
   attackCooldown: 2
+  force: 5
   whatIsTarget:
     serializedVersion: 2
     m_Bits: 128
@@ -225,7 +227,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 54ddbf37cc8b0e344afcf0c62bc561b9, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  knockbackForce: 10
+  knockbackForce: 5
   knockbackTime: 0.2
 --- !u!114 &8550059636799537234
 MonoBehaviour:
