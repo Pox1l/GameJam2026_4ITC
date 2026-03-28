@@ -6,8 +6,9 @@ using UnityEngine;
 public class Timer : MonoBehaviour
 {
     public TextMeshProUGUI TotalScore;
+    public TextMeshProUGUI IngameSouls;
     public TextMeshProUGUI timerText;
-    public double multiplier = 1.8;
+    public double multiplier = 1;
     private double score = 0;
 
     public float timeInterval = 10f;
@@ -30,7 +31,7 @@ public class Timer : MonoBehaviour
         {
             score += (scoreToAdd * multiplier) ;
             scoreTimer -= timeInterval;
-
+            IngameSouls.text = score.ToString();
             Debug.Log("momentální scóre:" + score);
         }
     }
