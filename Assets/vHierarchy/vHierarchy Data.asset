@@ -38,13 +38,16 @@ MonoBehaviour:
         - globalObjectIdString: GlobalObjectId_V1-2-cbc04ead01e97bb4097d7338b5de5df5-2019524476-0
         - globalObjectIdString: GlobalObjectId_V1-2-cbc04ead01e97bb4097d7338b5de5df5-673392058-0
         - globalObjectIdString: GlobalObjectId_V1-2-cbc04ead01e97bb4097d7338b5de5df5-278222699-0
+        - globalObjectIdString: GlobalObjectId_V1-2-cbc04ead01e97bb4097d7338b5de5df5-831626927-0
+        - globalObjectIdString: GlobalObjectId_V1-2-cbc04ead01e97bb4097d7338b5de5df5-1552531596-0
+        - globalObjectIdString: GlobalObjectId_V1-2-cbc04ead01e97bb4097d7338b5de5df5-780596126-0
         values:
         - colorIndex: 0
           iconNameOrGuid: Canvas Icon
           isIconRecursive: 0
           isColorRecursive: 0
         - colorIndex: 0
-          iconNameOrGuid: Folder Icon
+          iconNameOrGuid: Folder
           isIconRecursive: 0
           isColorRecursive: 0
         - colorIndex: 0
@@ -57,6 +60,18 @@ MonoBehaviour:
           isColorRecursive: 0
         - colorIndex: 0
           iconNameOrGuid: ReflectionProbe Icon
+          isIconRecursive: 0
+          isColorRecursive: 0
+        - colorIndex: 0
+          iconNameOrGuid: Camera Icon
+          isIconRecursive: 0
+          isColorRecursive: 0
+        - colorIndex: 0
+          iconNameOrGuid: Folder
+          isIconRecursive: 0
+          isColorRecursive: 0
+        - colorIndex: 0
+          iconNameOrGuid: MeshCollider Icon
           isIconRecursive: 0
           isColorRecursive: 0
     - goDatas_byGlobalId:
