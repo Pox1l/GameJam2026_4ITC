@@ -9,12 +9,14 @@ public class EnemyHealth : MonoBehaviour
     // Reference na tvé další skripty
     private DamageFlash damageFlash;
     private EnemyKnockback knockback;
+    private EnemyDrop drop;
 
     void Awake()
     {
         // Pøi startu si skript automaticky najde potøebné komponenty na stejném objektu
         damageFlash = GetComponent<DamageFlash>();
         knockback = GetComponent<EnemyKnockback>();
+        drop = GetComponent<EnemyDrop>();
     }
 
     void Start()
@@ -44,6 +46,7 @@ public class EnemyHealth : MonoBehaviour
         // 3. Kontrola smrti
         if (currentHealth <= 0)
         {
+            if (drop != null) drop.DropLoot();
             Die();
         }
     }
