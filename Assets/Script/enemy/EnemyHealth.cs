@@ -6,6 +6,17 @@ public class EnemyHealth : MonoBehaviour
     public int maxHealth = 50;
     private int currentHealth;
 
+    // Reference na tvé další skripty
+    private DamageFlash damageFlash;
+    private EnemyKnockback knockback;
+
+    void Awake()
+    {
+        // Pøi startu si skript automaticky najde potøebné komponenty na stejném objektu
+        damageFlash = GetComponent<DamageFlash>();
+        knockback = GetComponent<EnemyKnockback>();
+    }
+
     void Start()
     {
         currentHealth = maxHealth;
@@ -13,16 +24,30 @@ public class EnemyHealth : MonoBehaviour
 
     public void TakeDamage(int damage)
     {
+        if (currentHealth <= 0) return; // Pokud je už mrtvý, nedìlej nic
+
         currentHealth -= damage;
         Debug.Log($"{gameObject.name} dostal {damage} poškození. Zbývá: {currentHealth} HP.");
 
-        // Zde mùžeš pozdìji pøidat napø. bliknutí do èervena (Visual Feedback)
+        // 1. Vizuální efekt (Flash)
+        if (damageFlash != null)
+        {
+            damageFlash.Flash();
+        }
 
+        // 2. Fyzický efekt (Knockback)
+        if (knockback != null)
+        {
+            knockback.PlayKnockback();
+        }
+
+        // 3. Kontrola smrti
         if (currentHealth <= 0)
         {
             Die();
         }
     }
+
     void Die()
     {
         Debug.Log($"{gameObject.name} zemøel!");
