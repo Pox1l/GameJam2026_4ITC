@@ -7,4 +7,6 @@ public class Soul : ScriptableObject
     [SerializeField]
     private int value;
 
+    public GameObject Object;
+
 }
