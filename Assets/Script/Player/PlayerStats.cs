@@ -19,13 +19,12 @@ public class PlayerStats : MonoBehaviour
     public Slider healthSlider;
     public TextMeshProUGUI hpText;
 
-    private DamageFlash _damageFlash;
+    public AudioClip hurtEffect;
+    public AudioSource player;
+
     private void Awake()
     {
         if (Instance == null) Instance = this;
-
-        // Najde komponentu DamageFlash na stejném objektu
-        _damageFlash = GetComponent<DamageFlash>();
     }
 
     void Start()
@@ -100,15 +99,14 @@ public class PlayerStats : MonoBehaviour
     {
         if (isDead) return;
         currentHealth -= damage;
-
-        if (_damageFlash != null)
-        {
-            _damageFlash.Flash();
-        }
+        player.clip = hurtEffect;
+        player.Play();
     }
 
     void Die()
     {
+        player.clip = hurtEffect;
+        player.Play();
         Debug.Log("<color=red>HRÁÈ ZEMØEL!</color>");
 
         if (TryGetComponent(out Rigidbody2D rb)) rb.velocity = Vector2.zero;

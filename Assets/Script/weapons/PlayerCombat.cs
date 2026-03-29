@@ -22,6 +22,9 @@ public class PlayerCombat : MonoBehaviour
     private float currentDamage;
     private float nextAttackTime = 0f;
 
+    public AudioClip bowEffect;
+    public AudioSource bowEffectPlayer;
+
     void Start()
     {
         currentWeaponData = null;
@@ -113,6 +116,8 @@ public class PlayerCombat : MonoBehaviour
                 if (proj.TryGetComponent(out Rigidbody2D rb))
                 {
                     rb.velocity = firePoint.right * currentWeaponData.projectileSpeed;
+                    bowEffectPlayer.clip = bowEffect;
+                    bowEffectPlayer.Play();
                 }
 
                 if (proj.TryGetComponent(out Projectile dealer))

@@ -14,6 +14,9 @@ public class BossHealth : MonoBehaviour
 
     public UnityEvent OnBossDeath;
 
+    public AudioClip hurtEffect;
+    public AudioSource player;
+
     void Awake()
     {
         damageFlash = GetComponent<DamageFlash>();
@@ -34,6 +37,8 @@ public class BossHealth : MonoBehaviour
 
     public void TakeDamage(int damage)
     {
+        player.clip = hurtEffect;
+        player.Play();
         if (currentHealth <= 0) return;
 
         currentHealth -= damage;
@@ -52,6 +57,8 @@ public class BossHealth : MonoBehaviour
 
     void Die()
     {
+        player.clip = hurtEffect;
+        player.Play();
         if (drop != null) drop.DropLoot();
 
         // Zobrazení vítìzného screenu pøes UIManager
