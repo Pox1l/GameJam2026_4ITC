@@ -11,6 +11,8 @@ public class EnemyHealth : MonoBehaviour
     private EnemyKnockback knockback;
     private EnemyDrop drop;
 
+    public AudioSource player;
+    public AudioClip hurtClip;
     void Awake()
     {
         // Pøi startu si skript automaticky najde potøebné komponenty na stejném objektu
@@ -26,6 +28,9 @@ public class EnemyHealth : MonoBehaviour
 
     public void TakeDamage(int damage)
     {
+        player.clip = hurtClip;
+        player.Play();
+
         if (currentHealth <= 0) return; // Pokud je už mrtvý, nedìlej nic
 
         currentHealth -= damage;
@@ -53,10 +58,9 @@ public class EnemyHealth : MonoBehaviour
 
     void Die()
     {
-        Debug.Log($"{gameObject.name} zemøel!");
+        Debug.Log($"{gameObject.name} zemøel!"); 
 
         // Zde mùžeš pozdìji pøidat spawn mincí/zkušeností nebo èásticový efekt
-
         Destroy(gameObject);
     }
 }

@@ -19,6 +19,9 @@ public class PlayerStats : MonoBehaviour
     public Slider healthSlider;
     public TextMeshProUGUI hpText;
 
+    public AudioClip hurtEffect;
+    public AudioSource player;
+
     private void Awake()
     {
         if (Instance == null) Instance = this;
@@ -96,10 +99,14 @@ public class PlayerStats : MonoBehaviour
     {
         if (isDead) return;
         currentHealth -= damage;
+        player.clip = hurtEffect;
+        player.Play();
     }
 
     void Die()
     {
+        player.clip = hurtEffect;
+        player.Play();
         Debug.Log("<color=red>HRÁÈ ZEMØEL!</color>");
 
         if (TryGetComponent(out Rigidbody2D rb)) rb.velocity = Vector2.zero;

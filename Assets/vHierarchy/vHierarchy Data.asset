@@ -17,6 +17,10 @@ MonoBehaviour:
     - 2cda990e2423bbf4892e6590ba056729
     - cbc04ead01e97bb4097d7338b5de5df5
     - 291dbf1c2c8d27544acc3c5558828f91
+    - 56649714617563e429998fe5fd8695d5
+    - 356071295d30e944288436bd07bff0f9
+    - d2d4f0d28c20efb49b64a4ae39498f93
+    - 6c27265fa52893b41b50c8df4822ad10
     values:
     - goDatas_byGlobalId:
         keys:
@@ -67,6 +71,7 @@ MonoBehaviour:
         - globalObjectIdString: GlobalObjectId_V1-2-cbc04ead01e97bb4097d7338b5de5df5-2025479198-0
         - globalObjectIdString: GlobalObjectId_V1-2-cbc04ead01e97bb4097d7338b5de5df5-1475753965-0
         - globalObjectIdString: GlobalObjectId_V1-2-cbc04ead01e97bb4097d7338b5de5df5-1945513216-0
+        - globalObjectIdString: GlobalObjectId_V1-2-cbc04ead01e97bb4097d7338b5de5df5-613363803-0
         values:
         - colorIndex: 3
           iconNameOrGuid: Canvas Icon
@@ -204,6 +209,10 @@ MonoBehaviour:
           iconNameOrGuid: 
           isIconRecursive: 0
           isColorRecursive: 0
+        - colorIndex: 0
+          iconNameOrGuid: cs Script Icon
+          isIconRecursive: 0
+          isColorRecursive: 0
     - goDatas_byGlobalId:
         keys:
         - globalObjectIdString: GlobalObjectId_V1-2-291dbf1c2c8d27544acc3c5558828f91-647317214-0
@@ -290,6 +299,53 @@ MonoBehaviour:
           isColorRecursive: 0
         - colorIndex: 2
           iconNameOrGuid: CapsuleCollider Icon
+          isIconRecursive: 0
+          isColorRecursive: 0
+    - goDatas_byGlobalId:
+        keys:
+        - globalObjectIdString: GlobalObjectId_V1-1-56649714617563e429998fe5fd8695d5-0-0
+        - globalObjectIdString: GlobalObjectId_V1-1-56649714617563e429998fe5fd8695d5-2524925320533376123-0
+        values:
+        - colorIndex: 0
+          iconNameOrGuid: AudioClip Icon
+          isIconRecursive: 0
+          isColorRecursive: 0
+        - colorIndex: 0
+          iconNameOrGuid: AudioSource Icon
+          isIconRecursive: 0
+          isColorRecursive: 0
+    - goDatas_byGlobalId:
+        keys:
+        - globalObjectIdString: GlobalObjectId_V1-1-356071295d30e944288436bd07bff0f9-0-0
+        - globalObjectIdString: GlobalObjectId_V1-1-356071295d30e944288436bd07bff0f9-3110557726052456811-0
+        values:
+        - colorIndex: 0
+          iconNameOrGuid: AudioSource Icon
+          isIconRecursive: 0
+          isColorRecursive: 0
+        - colorIndex: 0
+          iconNameOrGuid: AudioSource Icon
+          isIconRecursive: 0
+          isColorRecursive: 0
+    - goDatas_byGlobalId:
+        keys:
+        - globalObjectIdString: GlobalObjectId_V1-1-d2d4f0d28c20efb49b64a4ae39498f93-0-0
+        - globalObjectIdString: GlobalObjectId_V1-1-d2d4f0d28c20efb49b64a4ae39498f93-5720104717215655614-0
+        values:
+        - colorIndex: 0
+          iconNameOrGuid: AudioSource Icon
+          isIconRecursive: 0
+          isColorRecursive: 0
+        - colorIndex: 0
+          iconNameOrGuid: AudioSource Icon
+          isIconRecursive: 0
+          isColorRecursive: 0
+    - goDatas_byGlobalId:
+        keys:
+        - globalObjectIdString: GlobalObjectId_V1-1-6c27265fa52893b41b50c8df4822ad10-0-0
+        values:
+        - colorIndex: 0
+          iconNameOrGuid: AudioSource Icon
           isIconRecursive: 0
           isColorRecursive: 0
   bookmarks: []
