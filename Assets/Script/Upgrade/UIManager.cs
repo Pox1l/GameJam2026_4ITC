@@ -53,6 +53,15 @@ public class UIManager : MonoBehaviour
 
     // --- LOGIKA PRO KONEC HRY (VÍTÌZSTVÍ) ---
 
+
+    public void OnRespawnClicked()
+    {
+        ClearLevel();
+        upgradeCanvas.SetActive(false);
+        weaponSelectionPanel.SetActive(true);
+        WeaponSelectionUI uiScript = weaponSelectionPanel.GetComponent<WeaponSelectionUI>();
+        if (uiScript != null) uiScript.UpdateWeaponStatsDisplay();
+    }
     public void ShowVictoryScreen()
     {
         HideBossUI(); // Schová HP bar bosse

@@ -182,7 +182,7 @@ MonoBehaviour:
   attackRange: 11
   stoppingDistance: 5
   attackCooldown: 3
-  projectileForce: 5.12
+  projectileForce: 10
   whatIsTarget:
     serializedVersion: 2
     m_Bits: 128
