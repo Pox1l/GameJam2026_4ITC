@@ -88,7 +88,7 @@ AudioSource:
   MaxDistance: 500
   Pan2D: 0
   rolloffMode: 0
-  BypassEffects: 0
+  BypassEffects: 1
   BypassListenerEffects: 0
   BypassReverbZones: 0
   rolloffCustomCurve:
@@ -340,10 +340,10 @@ MonoBehaviour:
   fixedPoint: {fileID: 5849388634419497970}
   firePoint: {fileID: 4833859124204225864}
   animator: {fileID: 8873663147207411950}
-  attackRange: 30
+  attackRange: 8
   stoppingDistance: 5
   attackCooldown: 2
-  force: 3
+  force: 2
   whatIsTarget:
     serializedVersion: 2
     m_Bits: 128
