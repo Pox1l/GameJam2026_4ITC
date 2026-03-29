@@ -23,7 +23,7 @@ public class MenuManager : MonoBehaviour
 
     public void SetVolume(float volume)
     {
-        mixer.SetFloat("Volume", volumeSlider.value);
+        mixer.SetFloat("Effects", volumeSlider.value);
     }
 
     // Tuto metodu teï mùžeš napojit na tlaèítko a pøedat jí èíslo scény
