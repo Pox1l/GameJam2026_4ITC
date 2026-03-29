@@ -159,10 +159,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9f64a0a2c371bf84eb264e78f10039d0, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  bossName: Ancient Guargian
   maxHealth: 500
-  OnHealthChanged:
-    m_PersistentCalls:
-      m_Calls: []
   OnBossDeath:
     m_PersistentCalls:
       m_Calls: []
