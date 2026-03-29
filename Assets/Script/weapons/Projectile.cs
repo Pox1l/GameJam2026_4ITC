@@ -1,29 +1,26 @@
 using UnityEngine;
 
-[RequireComponent(typeof(Collider2D))] // Šíp potøebuje Collider
+[RequireComponent(typeof(Collider2D))]
 public class Projectile : MonoBehaviour
 {
-    // Tyto hodnoty nastavíme z PlayerCombat pøi vystøelení
     [HideInInspector] public int damageToDeal;
     [HideInInspector] public LayerMask enemyLayers;
 
     [Header("Nastavení Projektilu")]
-    [SerializeField] private float lifetime = 5f; // Šíp se po 5s znièí, aby nelétal do nekoneèna
+    [SerializeField] private float lifetime = 5f;
+    // PØIDÁNO: Vrstvy, které šíp znièí (napø. zdi, pøekážky)
+    [SerializeField] private LayerMask obstacleLayers;
 
     void Start()
     {
-        // Automaticky znièit šíp po uplynutí lifetime
         Destroy(gameObject, lifetime);
     }
 
-    // Tato funkce se zavolá, když Collider šípu narazí do jiného Collideru nastaveného jako Trigger
     void OnTriggerEnter2D(Collider2D collision)
     {
-        // 1. KONTROLA: Narazili jsme do nepøítele (je ve správné Layer)?
-        // Používáme bitový posun k ovìøení LayerMask
+        // 1. KONTROLA: Nepøítel (Dá damage + znièí se)
         if (((1 << collision.gameObject.layer) & enemyLayers) != 0)
         {
-            // 2. KONTROLA: Má nepøítel EnemyHealth nebo BossHealth?
             if (collision.TryGetComponent(out EnemyHealth enemy))
             {
                 enemy.TakeDamage(damageToDeal);
@@ -35,14 +32,16 @@ public class Projectile : MonoBehaviour
                 HitTarget();
             }
         }
+        // 2. KONTROLA: Pøekážka/Zeï (Jen se znièí bez damage)
+        else if (((1 << collision.gameObject.layer) & obstacleLayers) != 0)
+        {
+            HitTarget();
+        }
     }
 
-    // Co se stane, když šíp nìkoho trefí
     void HitTarget()
     {
-        // Zde mùžeš pøidat efekt zásahu (èástice, zvuk)
-
-        // Znièit šíp
+        // Tady mùžeš instanciovat èástice nárazu
         Destroy(gameObject);
     }
 }

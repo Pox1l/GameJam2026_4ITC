@@ -31,10 +31,7 @@ public class PlayerCombat : MonoBehaviour
     {
         if (currentWeaponData == null) return;
 
-        // Plynulá rotace zbranì (opraveno proti klepání Cinemachine)
-        HandleWeaponRotation();
-
-        // Automatický útok (držením Fire1)
+        // Útok necháme v Update kvùli pøesné odezvì na kliknutí
         if (Input.GetButton("Fire1") && Time.time >= nextAttackTime)
         {
             Attack();
@@ -42,22 +39,26 @@ public class PlayerCombat : MonoBehaviour
         }
     }
 
+    // ZMÌNA: Rotaci zbranì poèítáme až POTÉ, co Cinemachine pohne kamerou
+    void LateUpdate()
+    {
+        if (currentWeaponData == null) return;
+        HandleWeaponRotation();
+    }
+
     void HandleWeaponRotation()
     {
-        // Výpoèet v Screen Space (pixelech) eliminuje tøas zpùsobený pohybem kamery
+        // Výpoèet pøes Screen Space je nejstabilnìjší pro pixel art
         Vector3 playerScreenPos = Camera.main.WorldToScreenPoint(fixedPoint.position);
         Vector2 mousePos = Input.mousePosition;
-
+        
         Vector2 aimDirection = (mousePos - (Vector2)playerScreenPos).normalized;
 
-        // Nastavení pozice firePointu ve svìtì
         firePoint.position = (Vector2)fixedPoint.position + aimDirection * orbitDistance;
 
-        // Výpoèet úhlu
         float angle = Mathf.Atan2(aimDirection.y, aimDirection.x) * Mathf.Rad2Deg;
         firePoint.rotation = Quaternion.Euler(0, 0, angle);
 
-        // Flipování sprite (aby nebyl meè/luk vzhùru nohama pøi míøení vlevo)
         if (weaponSpriteRenderer != null)
         {
             if (angle >= -90f && angle <= 90f)
@@ -73,7 +74,6 @@ public class PlayerCombat : MonoBehaviour
 
         currentWeaponData = weaponList[index];
 
-        // Naètení vylepšeného poškození z UpgradeManageru
         string weaponType = currentWeaponData.isRanged ? "Bow" : "Sword";
         currentDamage = UpgradeManager.Instance.GetUpgradedDamage(currentWeaponData.baseDamage, weaponType);
 
@@ -88,7 +88,6 @@ public class PlayerCombat : MonoBehaviour
             spawnedWeaponObject.transform.SetLocalPositionAndRotation(Vector3.zero, Quaternion.identity);
             weaponSpriteRenderer = spawnedWeaponObject.GetComponent<SpriteRenderer>();
 
-            // Pøedání poškození meèi
             if (!currentWeaponData.isRanged)
             {
                 if (spawnedWeaponObject.TryGetComponent(out MeleeDamageDealer meleeDealer))
@@ -102,7 +101,6 @@ public class PlayerCombat : MonoBehaviour
 
     void Attack()
     {
-        // Aktualizace damage pøed každým útokem
         string weaponType = currentWeaponData.isRanged ? "Bow" : "Sword";
         currentDamage = UpgradeManager.Instance.GetUpgradedDamage(currentWeaponData.baseDamage, weaponType);
 
@@ -126,7 +124,6 @@ public class PlayerCombat : MonoBehaviour
         }
         else
         {
-            // Aktualizace damage pro Melee zbraò
             if (spawnedWeaponObject != null && spawnedWeaponObject.TryGetComponent(out MeleeDamageDealer meleeDealer))
             {
                 meleeDealer.damageToDeal = (int)currentDamage;
