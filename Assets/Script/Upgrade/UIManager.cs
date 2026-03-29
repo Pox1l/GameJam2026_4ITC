@@ -1,6 +1,7 @@
 using UnityEngine;
-using UnityEngine.UI; // Nutné pro Slider
-using TMPro;         // Nutné pro Texty
+using UnityEngine.UI;
+using TMPro;
+using UnityEngine.SceneManagement; // Nutné pro pøepínání scén
 
 public class UIManager : MonoBehaviour
 {
@@ -11,8 +12,12 @@ public class UIManager : MonoBehaviour
     public GameObject upgradeCanvas;
     public GameObject pauseMenuPanel;
 
-    [Header("Boss UI (Nové)")]
-    public GameObject bossHealthPanel; // Celý objekt BossCanvas nebo BossBar
+    [Header("Vítìzné UI (Finish)")]
+    public GameObject finishCanvas;  // Celý objekt Canvasu
+    public GameObject victoryPanel;  // Ten vypnutý objekt "Panel" pod Canvasem
+
+    [Header("Boss UI")]
+    public GameObject bossHealthPanel;
     public Slider bossHealthSlider;
     public TextMeshProUGUI bossHealthText;
     public TextMeshProUGUI bossNameText;
@@ -31,48 +36,44 @@ public class UIManager : MonoBehaviour
     private void Start()
     {
         OpenWeaponSelection();
-        if (bossHealthPanel != null) bossHealthPanel.SetActive(false); // Schovat pøi startu
+        if (victoryPanel != null) victoryPanel.SetActive(false); // Jistota, že je zavøený
     }
 
     private void Update()
     {
         if (Input.GetKeyDown(KeyCode.Escape))
         {
-            if (weaponSelectionPanel.activeSelf || upgradeCanvas.activeSelf) return;
+            // Pokud svítí vítìzství, upgrade nebo výbìr zbraní, pauzu neøešíme
+            if (weaponSelectionPanel.activeSelf || upgradeCanvas.activeSelf || (victoryPanel != null && victoryPanel.activeSelf)) return;
+
             if (isPaused) ResumeGame();
             else OpenPauseMenu();
         }
     }
 
-    // --- LOGIKA PRO BOSSE (Voláno z BossHealth) ---
+    // --- LOGIKA PRO KONEC HRY (VÍTÌZSTVÍ) ---
 
-    public void ShowBossUI(string name, int maxHealth)
+    public void ShowVictoryScreen()
     {
-        if (bossHealthPanel == null) return;
+        HideBossUI(); // Schová HP bar bosse
 
-        bossHealthPanel.SetActive(true);
-        if (bossNameText != null) bossNameText.text = name;
-        UpdateBossHealth(maxHealth, maxHealth);
-    }
+        if (finishCanvas != null) finishCanvas.SetActive(true);
 
-    public void UpdateBossHealth(int current, int max)
-    {
-        if (bossHealthSlider != null)
+        if (victoryPanel != null)
         {
-            bossHealthSlider.value = (float)current / max;
-        }
-        if (bossHealthText != null)
-        {
-            bossHealthText.text = $"{current} / {max}";
+            victoryPanel.SetActive(true); // Aktivuje ten vypnutý panel s tlaèítky
+            SetGameState(false);         // Zastaví èas hry (pauza)
         }
     }
 
-    public void HideBossUI()
+    public void ReturnToMainMenu()
     {
-        if (bossHealthPanel != null) bossHealthPanel.SetActive(false);
+        // Pøed naètením scény 0 musíme pustit èas, jinak menu zamrzne!
+        Time.timeScale = 1f;
+        SceneManager.LoadScene(0);
     }
 
-    // --- PAUSE MENU A OSTATNÍ ---
+    // --- PAUSE & MENU LOGIKA ---
 
     public void OpenPauseMenu()
     {
@@ -90,8 +91,34 @@ public class UIManager : MonoBehaviour
 
     public void QuitGame()
     {
+        Debug.Log("Ukonèuji hru...");
         Application.Quit();
     }
+
+    // --- BOSS UI LOGIKA ---
+
+    public void ShowBossUI(string name, int maxHealth)
+    {
+        if (bossHealthPanel != null)
+        {
+            bossHealthPanel.SetActive(true);
+            if (bossNameText != null) bossNameText.text = name;
+            UpdateBossHealth(maxHealth, maxHealth);
+        }
+    }
+
+    public void UpdateBossHealth(int current, int max)
+    {
+        if (bossHealthSlider != null) bossHealthSlider.value = (float)current / max;
+        if (bossHealthText != null) bossHealthText.text = $"{current} / {max}";
+    }
+
+    public void HideBossUI()
+    {
+        if (bossHealthPanel != null) bossHealthPanel.SetActive(false);
+    }
+
+    // --- POMOCNÉ FUNKCE ---
 
     public void OpenUpgradeMenuOnDeath()
     {
@@ -99,15 +126,6 @@ public class UIManager : MonoBehaviour
         upgradeCanvas.SetActive(true);
         if (upgradeUIScript != null) upgradeUIScript.UpdateButtons();
         SetGameState(false);
-    }
-
-    public void OnRespawnClicked()
-    {
-        ClearLevel();
-        upgradeCanvas.SetActive(false);
-        weaponSelectionPanel.SetActive(true);
-        WeaponSelectionUI uiScript = weaponSelectionPanel.GetComponent<WeaponSelectionUI>();
-        if (uiScript != null) uiScript.UpdateWeaponStatsDisplay();
     }
 
     public void StartNewRun()
@@ -134,6 +152,8 @@ public class UIManager : MonoBehaviour
         if (upgradeCanvas != null) upgradeCanvas.SetActive(false);
         if (pauseMenuPanel != null) pauseMenuPanel.SetActive(false);
         if (bossHealthPanel != null) bossHealthPanel.SetActive(false);
+        if (finishCanvas != null) finishCanvas.SetActive(false);
+        if (victoryPanel != null) victoryPanel.SetActive(false);
     }
 
     public void SetGameState(bool isPlaying)
