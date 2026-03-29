@@ -51,4 +51,10 @@ public class TimeManager : MonoBehaviour
             }
         }
     }
+    public void ResetTimer()
+    {
+        elapsedTime = 0f;
+        intervalCounter = 0f;
+        if (timerText != null) timerText.text = "00:00";
+    }
 }

@@ -188,7 +188,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: bea1b362d14cdf442961363a61538ca5, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  currentHealth: 0
+  currentHealth: 100
+  spawnPoints:
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
   healthSlider: {fileID: 0}
   hpText: {fileID: 0}
 --- !u!114 &285120704609223600

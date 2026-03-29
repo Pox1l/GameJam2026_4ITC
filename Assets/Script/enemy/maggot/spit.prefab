@@ -126,7 +126,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 53b31ab9e7f4faf429ed72b1f5b1c8c1, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  damage: 5
   lifetime: 3
+  obstacleLayers:
+    serializedVersion: 2
+    m_Bits: 512
 --- !u!58 &7116544405969242319
 CircleCollider2D:
   m_ObjectHideFlags: 0

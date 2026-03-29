@@ -104,6 +104,9 @@ MonoBehaviour:
     serializedVersion: 2
     m_Bits: 0
   lifetime: 3
+  obstacleLayers:
+    serializedVersion: 2
+    m_Bits: 512
 --- !u!50 &-2203126537107928265
 Rigidbody2D:
   serializedVersion: 4

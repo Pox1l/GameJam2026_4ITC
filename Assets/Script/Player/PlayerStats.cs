@@ -1,13 +1,19 @@
 using UnityEngine;
 using UnityEngine.UI;
+using System.Collections.Generic; // Nutné pro List
 using TMPro;
 
 public class PlayerStats : MonoBehaviour
 {
-    public static PlayerStats Instance; // Aby na nìj mohl volat UpgradeManager
+    public static PlayerStats Instance;
 
     private int _maxHealth;
     public float currentHealth;
+    private bool isDead = false;
+
+    [Header("Spawn Nastavení")]
+    // Seznam prázdných objektù v mapì, které slouží jako body pro respawn
+    public List<Transform> spawnPoints = new List<Transform>();
 
     [Header("UI Reference")]
     public Slider healthSlider;
@@ -20,60 +26,87 @@ public class PlayerStats : MonoBehaviour
 
     void Start()
     {
-        // Naèteme životy podle upgradù pøi startu
+        isDead = false;
         UpdateMaxHealth();
         currentHealth = _maxHealth;
+
+        // Pokud chceš zaèít na náhodném místì i pøi úplnì prvním startu:
+        TeleportToRandomSpawn();
     }
 
     void Update()
     {
-        // OPRAVA: Slider teï poèítá s aktuálním max zdravím, ne se stovkou
-        if (healthSlider != null)
+        if (healthSlider != null && _maxHealth > 0)
             healthSlider.value = currentHealth / _maxHealth;
 
         if (hpText != null)
             hpText.text = Mathf.CeilToInt(currentHealth).ToString() + "/" + _maxHealth.ToString() + " HP";
 
-        // Limity zdraví
+        if (currentHealth <= 0 && !isDead)
+        {
+            currentHealth = 0;
+            isDead = true;
+            Die();
+        }
+
         if (currentHealth > _maxHealth) currentHealth = _maxHealth;
-        if (currentHealth < 0) currentHealth = 0;
+
+        // Testovací klávesa
+        if (Input.GetKeyDown(KeyCode.K)) TakeDamage(999);
     }
 
-    // Tuto funkci zavolá UpgradeManager, když si koupíš HP
     public void UpdateMaxHealth()
     {
         if (UpgradeManager.Instance != null)
-        {
-            // Základ 100 + bonus za každý level z UpgradeManageru
             _maxHealth = 100 + (UpgradeManager.Instance.data.hpLevel * UpgradeManager.Instance.hpBonusPerLevel);
+        else
+            _maxHealth = 100;
+    }
+
+    public void ResetPlayerForNewRun()
+    {
+        isDead = false;
+        UpdateMaxHealth();
+        currentHealth = _maxHealth;
+
+        // --- ZMÌNA: Náhodný teleport ---
+        TeleportToRandomSpawn();
+
+        Debug.Log("Hráè resetován na náhodném bodì.");
+    }
+
+    private void TeleportToRandomSpawn()
+    {
+        if (spawnPoints != null && spawnPoints.Count > 0)
+        {
+            // Vybereme náhodný index ze seznamu
+            int randomIndex = Random.Range(0, spawnPoints.Count);
+            // Nastavíme pozici hráèe na pozici vybraného bodu
+            transform.position = spawnPoints[randomIndex].position;
         }
         else
         {
-            _maxHealth = 100; // Záloha, kdyby manager chybìl
+            // Pokud jsi zapomnìl nastavit body, hodí tì to na støed
+            transform.position = Vector3.zero;
+            Debug.LogWarning("Žádné spawn pointy nebyly nastaveny! Teleportuji na (0,0,0).");
         }
     }
 
-    // Metoda pro nepøátele (napø. Maggot projectile)
     public void TakeDamage(float damage)
     {
+        if (isDead) return;
         currentHealth -= damage;
-
-        if (currentHealth <= 0)
-        {
-            Die();
-        }
     }
 
     void Die()
     {
-        Debug.Log("Hráè zemøel!");
-        // Tady zavoláme tvoje menu pro výbìr zbranì, co jsme dìlali minule
-        if (WeaponSelectionManager.Instance != null)
-        {
-            WeaponSelectionManager.Instance.OnPlayerDeath();
-        }
+        Debug.Log("<color=red>HRÁÈ ZEMØEL!</color>");
 
-        // Resetujeme životy pro "nový pokus"
-        currentHealth = _maxHealth;
+        if (TryGetComponent(out Rigidbody2D rb)) rb.velocity = Vector2.zero;
+
+        if (UIManager.Instance != null)
+        {
+            UIManager.Instance.OpenUpgradeMenuOnDeath();
+        }
     }
 }
