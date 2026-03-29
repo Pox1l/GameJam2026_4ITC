@@ -54,13 +54,15 @@ public class BossHealth : MonoBehaviour
     {
         if (drop != null) drop.DropLoot();
 
-        // SCHOVÁNÍ UI PØES MANAGER
+        // Zobrazení vítìzného screenu pøes UIManager
         if (UIManager.Instance != null)
         {
-            UIManager.Instance.HideBossUI();
+            UIManager.Instance.ShowVictoryScreen();
         }
 
         OnBossDeath?.Invoke();
+
+        // Znièíme objekt bosse
         Destroy(gameObject);
     }
 }
