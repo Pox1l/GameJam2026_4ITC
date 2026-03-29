@@ -4,28 +4,32 @@ using UnityEngine.Events;
 public class BossHealth : MonoBehaviour
 {
     [Header("Nastavení Zdraví")]
+    public string bossName = "Golemus";
     public int maxHealth = 500;
     private int currentHealth;
 
     private DamageFlash damageFlash;
     private EnemyKnockback knockback;
-    private EnemyDrop drop; // Pøidáno
+    private EnemyDrop drop;
 
-    [Header("Události (Events)")]
-    public UnityEvent<float> OnHealthChanged;
     public UnityEvent OnBossDeath;
 
     void Awake()
     {
         damageFlash = GetComponent<DamageFlash>();
         knockback = GetComponent<EnemyKnockback>();
-        drop = GetComponent<EnemyDrop>(); // Najde skript pro drop
+        drop = GetComponent<EnemyDrop>();
     }
 
     void Start()
     {
         currentHealth = maxHealth;
-        OnHealthChanged?.Invoke(1f);
+
+        // ZOBRAZENÍ UI PØES MANAGER
+        if (UIManager.Instance != null)
+        {
+            UIManager.Instance.ShowBossUI(bossName, maxHealth);
+        }
     }
 
     public void TakeDamage(int damage)
@@ -37,16 +41,24 @@ public class BossHealth : MonoBehaviour
         if (damageFlash != null) damageFlash.Flash();
         if (knockback != null) knockback.PlayKnockback();
 
-        float healthPercent = (float)currentHealth / maxHealth;
-        OnHealthChanged?.Invoke(Mathf.Clamp01(healthPercent));
+        // AKTUALIZACE PØES MANAGER
+        if (UIManager.Instance != null)
+        {
+            UIManager.Instance.UpdateBossHealth(currentHealth, maxHealth);
+        }
 
         if (currentHealth <= 0) Die();
     }
 
     void Die()
     {
-        // Pøed znièením bosse vyhodíme loot
         if (drop != null) drop.DropLoot();
+
+        // SCHOVÁNÍ UI PØES MANAGER
+        if (UIManager.Instance != null)
+        {
+            UIManager.Instance.HideBossUI();
+        }
 
         OnBossDeath?.Invoke();
         Destroy(gameObject);
