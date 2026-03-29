@@ -63,6 +63,9 @@ MonoBehaviour:
         - globalObjectIdString: GlobalObjectId_V1-2-cbc04ead01e97bb4097d7338b5de5df5-1763140693-0
         - globalObjectIdString: GlobalObjectId_V1-2-cbc04ead01e97bb4097d7338b5de5df5-932481653-0
         - globalObjectIdString: GlobalObjectId_V1-2-cbc04ead01e97bb4097d7338b5de5df5-1486268279-0
+        - globalObjectIdString: GlobalObjectId_V1-2-cbc04ead01e97bb4097d7338b5de5df5-1576403207-0
+        - globalObjectIdString: GlobalObjectId_V1-2-cbc04ead01e97bb4097d7338b5de5df5-2025479198-0
+        - globalObjectIdString: GlobalObjectId_V1-2-cbc04ead01e97bb4097d7338b5de5df5-1475753965-0
         values:
         - colorIndex: 3
           iconNameOrGuid: Canvas Icon
@@ -182,6 +185,18 @@ MonoBehaviour:
           isColorRecursive: 0
         - colorIndex: 0
           iconNameOrGuid: CapsuleCollider Icon
+          isIconRecursive: 0
+          isColorRecursive: 0
+        - colorIndex: 0
+          iconNameOrGuid: Canvas Icon
+          isIconRecursive: 0
+          isColorRecursive: 0
+        - colorIndex: 4
+          iconNameOrGuid: Canvas Icon
+          isIconRecursive: 0
+          isColorRecursive: 0
+        - colorIndex: 3
+          iconNameOrGuid: 
           isIconRecursive: 0
           isColorRecursive: 0
     - goDatas_byGlobalId:

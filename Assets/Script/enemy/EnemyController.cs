@@ -17,7 +17,7 @@ public class EnemyController : MonoBehaviour
     [SerializeField] private float chaseRange = 15f;
 
     private float currentDetectionRange;
-    private Vector3 homePosition;
+    private Vector2 homePosition; // Změněno na Vector2
 
     private bool isChasing = false;
 
@@ -43,19 +43,19 @@ public class EnemyController : MonoBehaviour
             agent.ResetPath();
         }
 
-        if (homePosition == Vector3.zero) homePosition = transform.position;
+        // Kontrola pomocí Vector2
+        if (homePosition == Vector2.zero) homePosition = transform.position;
         currentDetectionRange = aggroRange;
         isChasing = false;
     }
 
     public void OnHitAggro()
     {
-        // Pokud nepřítel dostane ránu, okamžitě přepne na chase range a začne lovit
         currentDetectionRange = chaseRange;
         isChasing = true;
     }
 
-    public void SetHomePosition(Vector3 position)
+    public void SetHomePosition(Vector2 position) // Změněno na Vector2
     {
         homePosition = position;
     }
@@ -70,24 +70,26 @@ public class EnemyController : MonoBehaviour
             if (player == null) return;
         }
 
-        float distanceToPlayer = Vector2.Distance(transform.position, player.position);
-        float distanceToHome = Vector2.Distance(transform.position, homePosition);
+        // Výpočty ve Vector2
+        Vector2 currentPos = transform.position;
+        Vector2 playerPos = player.position;
 
-        Vector3 targetPosition;
+        float distanceToPlayer = Vector2.Distance(currentPos, playerPos);
+        float distanceToHome = Vector2.Distance(currentPos, homePosition);
+
+        Vector2 targetPosition; // Změněno na Vector2
 
         // --- Logika Aggra ---
         if (distanceToPlayer <= currentDetectionRange)
         {
             isChasing = true;
-            targetPosition = player.position;
+            targetPosition = playerPos;
         }
         else
         {
-            // Hráč utekl z dosahu
             isChasing = false;
             currentDetectionRange = aggroRange;
 
-            // Pokud jsme doma, stojíme
             if (distanceToHome <= stopDistance)
             {
                 agent.ResetPath();
@@ -99,8 +101,9 @@ public class EnemyController : MonoBehaviour
         }
 
         // --- Pohyb ---
-        if (Vector2.Distance(transform.position, targetPosition) > stopDistance)
+        if (Vector2.Distance(currentPos, targetPosition) > stopDistance)
         {
+            // NavMeshAgent přijímá Vector3, ale Vector2 se tam automaticky převede (Z bude 0)
             agent.SetDestination(targetPosition);
         }
         else
@@ -108,7 +111,7 @@ public class EnemyController : MonoBehaviour
             agent.ResetPath();
         }
 
-        // Animace podle rychlosti agenta
+        // Animace
         Vector2 velocity2D = new Vector2(agent.velocity.x, agent.velocity.y);
         SetAnimator(velocity2D);
     }
