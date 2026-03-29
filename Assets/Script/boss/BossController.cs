@@ -1,188 +1,173 @@
 using UnityEngine;
+using UnityEngine.AI;
 using System.Collections;
 
-[RequireComponent(typeof(Rigidbody2D))]
+[RequireComponent(typeof(NavMeshAgent))]
 public class BossController : MonoBehaviour
 {
-    public Transform player;
-    private Animator anim;
-    private Rigidbody2D rb;
-
-    [Header("Hierarchy Reference (Z image_7.png)")]
-    [Tooltip("Pivot bod na tìle bosse, kolem kterého zbraò rotuje (Boss -> FixedPoint)")]
+    [Header("References")]
+    public GameObject projectilePrefab;
     public Transform fixedPoint;
-    [Tooltip("Bod výstøelu, který obíhá (Boss -> FixedPoint -> Fire point)")]
     public Transform firePoint;
+    private Animator anim;
+    private NavMeshAgent agent;
 
-    [Header("Nastavení pohybu a rotace zbranì")]
-    public float moveSpeed = 2f;
-    public float stoppingDistance = 5f; // Vzdálenost, kde boss zastaví a støílí
-    [Tooltip("Vzdálenost FirePointu od FixedPointu (polomìr orbity)")]
+    [Header("Combat Settings")]
+    public float attackRange = 7f;      // Dosah, kdy zaène støílet
+    public float stoppingDistance = 5f; // Jak blízko si tì pustí k tìlu
+    public float attackCooldown = 2f;
+    public float projectileForce = 10f;
+    public LayerMask whatIsTarget;      // Musí obsahovat "Player" a "Obstacles"
+    public Vector3 aimOffset = new Vector3(0, 0, 0);
+
+    [Header("Movement Settings")]
+    public float moveSpeed = 3.5f;
     public float orbitDistance = 1.2f;
 
-    [Header("Útok na dálku")]
-    public float attackCooldown = 3f;
-    public GameObject projectilePrefab;
-    public float projectileSpeed = 7f;
-
-    [Header("Editor Visualization")]
-    [SerializeField] private Color rangeColor = new Color(1, 0, 0, 0.3f);
-    [SerializeField] private Color orbitColor = new Color(0, 1, 1, 0.5f);
-    [SerializeField] private float gizmoSize = 0.3f;
-
-    private float nextAttackTime = 0f;
+    private Transform playerTransform;
+    private float lastAttackTime = -999f;
     private bool isAttacking = false;
 
     void Awake()
     {
         anim = GetComponent<Animator>();
-        rb = GetComponent<Rigidbody2D>();
+        agent = GetComponent<NavMeshAgent>();
+
+        // Nastavení pro 2D NavMesh
+        agent.updateRotation = false;
+        agent.updateUpAxis = false;
+        agent.speed = moveSpeed;
     }
 
     void Start()
     {
-        if (player == null)
-        {
-            GameObject p = GameObject.FindGameObjectWithTag("Player");
-            if (p != null) player = p.transform;
-        }
+        FindPlayer();
 
-        // Kontrola referencí
         if (fixedPoint == null || firePoint == null)
-        {
-            Debug.LogError("Boss nemá pøiøazené FixedPoint nebo FirePoint! Zkontroluj Hierarchy podle image_7.png.");
-        }
+            Debug.LogError("Boss nemá pøiøazené body pro støelbu!");
     }
 
     void Update()
     {
-        if (player == null || isAttacking) return;
+        if (playerTransform == null || !agent.isOnNavMesh) return;
 
-        float distance = Vector2.Distance(transform.position, player.position);
+        float distanceToPlayer = Vector2.Distance(transform.position, playerTransform.position);
+        bool hasLineOfSight = CheckLineOfSight();
 
-        // 1. OTÁÈENÍ BOSSE (Pro Blend Tree v Animatoru - image_3.png context)
-        // Vypoèítáme, zda je hráè vlevo (-1) nebo vpravo (1) pro sprite
-        float directionToPlayer = player.position.x > transform.position.x ? 1f : -1f;
+        // 1. OTÁÈENÍ A ANIMACE SMÌRU
+        float directionToPlayer = playerTransform.position.x > transform.position.x ? 1f : -1f;
         anim.SetFloat("Horizontal", directionToPlayer);
 
-        // 2. POHYB NEBO ÚTOK
-        if (distance > stoppingDistance)
+        // 2. LOGIKA ÚTOKU A POHYBU
+        if (hasLineOfSight)
         {
-            MoveTowardsPlayer();
-            anim.SetFloat("Speed", 1f); // Zapne animaci chùze
+            HandleWeaponRotation(); // Otáèí firePoint k hráèi
+
+            if (distanceToPlayer <= attackRange)
+            {
+                // VIDÍ HRÁÈE A JE V DOSAHU -> STOJÍ A STØÍLÍ
+                StopMovement();
+
+                if (Time.time >= lastAttackTime + attackCooldown && !isAttacking)
+                {
+                    StartAttackSequence();
+                }
+            }
+            else if (distanceToPlayer <= stoppingDistance)
+            {
+                StopMovement();
+            }
+            else
+            {
+                MoveToPlayer();
+            }
         }
         else
         {
-            rb.velocity = Vector2.zero;
-            anim.SetFloat("Speed", 0f); // Idle
-
-            // Pokud je v dosahu a cooldown vypršel, spus sekvenci útoku
-            if (Time.time >= nextAttackTime)
-            {
-                StartCoroutine(AttackSequence());
-            }
+            // NEVIDÍ HRÁÈE -> JDE K NÌMU (Pathfinding kolem zdí)
+            MoveToPlayer();
         }
+
+        // Update animace pohybu
+        anim.SetFloat("Speed", agent.velocity.magnitude > 0.1f ? 1f : 0f);
     }
 
-    // Rotaci a pozici FirePointu øešíme v LateUpdate, aby Cinemachine (pokud je) nezpùsobovala tøas
-    void LateUpdate()
+    bool CheckLineOfSight()
     {
-        if (player == null || fixedPoint == null || firePoint == null) return;
-        HandleWeaponRotation();
+        Vector3 targetPos = playerTransform.position + aimOffset;
+        Vector2 direction = (targetPos - firePoint.position).normalized;
+        float distance = Vector2.Distance(firePoint.position, targetPos);
+
+        // Raycast kontroluje pøekážky
+        RaycastHit2D hit = Physics2D.Raycast(firePoint.position, direction, distance, whatIsTarget);
+
+        Debug.DrawRay(firePoint.position, direction * distance, hit.collider != null && hit.collider.CompareTag("Player") ? Color.green : Color.red);
+
+        return hit.collider != null && hit.collider.CompareTag("Player");
     }
 
-    // --- LOGIKA ROTACE ZBRANÌ ---
     void HandleWeaponRotation()
     {
-        // Smìr k hráèi
-        Vector2 aimDirection = (player.position - fixedPoint.position).normalized;
-
-        // Aktualizace pozice FirePointu (orbita kolem FixedPointu)
+        Vector2 aimDirection = (playerTransform.position + aimOffset - fixedPoint.position).normalized;
         firePoint.position = (Vector2)fixedPoint.position + aimDirection * orbitDistance;
-
-        // Výpoèet úhlu
         float angle = Mathf.Atan2(aimDirection.y, aimDirection.x) * Mathf.Rad2Deg;
-
-        // Otoèení FirePointu tak, aby jeho 'right' vektor míøil na hráèe
         firePoint.rotation = Quaternion.Euler(0, 0, angle);
     }
 
-    void MoveTowardsPlayer()
-    {
-        Vector2 direction = (player.position - transform.position).normalized;
-        rb.velocity = direction * moveSpeed;
-    }
-
-    IEnumerator AttackSequence()
+    void StartAttackSequence()
     {
         isAttacking = true;
-        rb.velocity = Vector2.zero;
+        lastAttackTime = Time.time;
+        anim.SetTrigger("Attack");
 
-        // Spustí animaci útoku (v Animatoru nastav trigger "RangedAttack" - image_3.png context)
-        // anim.SetTrigger("RangedAttack");
-        anim.SetBool("Attack", true); // Pøidáno pro jistotu, pokud máš Bool parametrem
-
-        nextAttackTime = Time.time + attackCooldown;
-
-        // Èekáme, než animace nápøahu dobìhne k Eventu (uprav èas)
-        yield return new WaitForSeconds(0.5f);
-
-        //anim.SetBool("Attack", false); // Vypne útoèný stav
-        isAttacking = false;
+        // Pojistka pro ukonèení útoku, kdyby vypadl Animation Event
+        Invoke("FinishAttack", 2.0f);
     }
 
-    // --- TUTO FUNKCI ZAVOLÁŠ PØES ANIMATION EVENT ---
-    public void ShootProjectile()
+    // --- VOLÁNO PØES ANIMATION EVENT ---
+    public void Shoot()
     {
-        if (player == null || projectilePrefab == null || firePoint == null) return;
-
-        // Vytvoøíme støelu na FirePoint.position s orientací FirePointu
-        GameObject proj = Instantiate(projectilePrefab, firePoint.position, firePoint.rotation);
-
-        // Nastavíme rychlost støely ve smìru, kam míøí FirePoint
-        if (proj.TryGetComponent(out Rigidbody2D projRb))
+        if (projectilePrefab != null && firePoint != null)
         {
-            // Standardní 2D projektily smìøují 'doprava'. FirePoint.right míøí na hráèe.
-            projRb.velocity = firePoint.right * projectileSpeed;
-
-            // Zabezpeèíme, aby sprite støely byl otoèen ve smìru letu (pokud letí šikmo)
-            Vector2 moveDir = projRb.velocity;
-            if (moveDir != Vector2.zero)
+            GameObject proj = Instantiate(projectilePrefab, firePoint.position, firePoint.rotation);
+            if (proj.TryGetComponent(out Rigidbody2D rb))
             {
-                float projAngle = Mathf.Atan2(moveDir.y, moveDir.x) * Mathf.Rad2Deg;
-                proj.transform.rotation = Quaternion.Euler(0, 0, projAngle);
+                Vector2 shootDir = (playerTransform.position + aimOffset - firePoint.position).normalized;
+                rb.AddForce(shootDir * projectileForce, ForceMode2D.Impulse);
             }
         }
+        FinishAttack();
     }
 
-    // Vizualizace orbity a spawn pointu v Editoru
+    public void FinishAttack()
+    {
+        isAttacking = false;
+        CancelInvoke("FinishAttack");
+    }
+
+    void MoveToPlayer()
+    {
+        agent.isStopped = false;
+        agent.SetDestination(playerTransform.position);
+    }
+
+    void StopMovement()
+    {
+        agent.isStopped = true;
+        agent.velocity = Vector3.zero;
+    }
+
+    void FindPlayer()
+    {
+        GameObject player = GameObject.FindGameObjectWithTag("Player");
+        if (player != null) playerTransform = player.transform;
+    }
+
     void OnDrawGizmosSelected()
     {
-        // Vykreslení dosahu støelby (stopping distance)
-        Gizmos.color = rangeColor;
+        Gizmos.color = Color.red;
+        Gizmos.DrawWireSphere(transform.position, attackRange);
+        Gizmos.color = Color.yellow;
         Gizmos.DrawWireSphere(transform.position, stoppingDistance);
-
-        if (fixedPoint != null)
-        {
-            // Nakreslí støed otáèení
-            Gizmos.color = orbitColor;
-            Gizmos.DrawWireSphere(fixedPoint.position, gizmoSize);
-
-            // Nakreslí polomìr orbity
-            Gizmos.DrawWireSphere(fixedPoint.position, orbitDistance);
-
-            if (firePoint != null)
-            {
-                // Èára k aktuální pozici FirePointu
-                Gizmos.DrawLine(fixedPoint.position, firePoint.position);
-
-                // Nakreslí bod výstøelu
-                Gizmos.color = Color.red;
-                Gizmos.DrawWireCube(firePoint.position, new Vector3(gizmoSize, gizmoSize, gizmoSize));
-
-                // Ukázka smìru výstøelu
-                Gizmos.DrawRay(firePoint.position, firePoint.right * 1f);
-            }
-        }
     }
 }

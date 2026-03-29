@@ -1,5 +1,6 @@
 using UnityEngine;
 using TMPro;
+using System.Collections; // Nutné pro IEnumerator
 
 public class BossAltar : MonoBehaviour
 {
@@ -9,9 +10,9 @@ public class BossAltar : MonoBehaviour
     public Transform spawnPoint;
 
     [Header("UI Reference (Pøiøaï v Inspektoru)")]
-    public GameObject interactionWorldUI; // Celý panel (bossPanel)
-    public GameObject pressEKeyObject;   // Konkrétnì ten objekt "E"
-    public TextMeshProUGUI costTextTMP;  // Text s cenou
+    public GameObject interactionWorldUI;
+    public GameObject pressEKeyObject;
+    public TextMeshProUGUI costTextTMP;
 
     [Header("Nastavení Klavesy")]
     public KeyCode interactKey = KeyCode.E;
@@ -21,9 +22,7 @@ public class BossAltar : MonoBehaviour
 
     void Start()
     {
-        // Skryjeme UI pøi startu
         ShowUI(false);
-
         if (costTextTMP != null)
             costTextTMP.text = spawnCost + " Souls";
 
@@ -45,7 +44,8 @@ public class BossAltar : MonoBehaviour
             SoulManager.Instance.totalSouls -= spawnCost;
             SoulManager.Instance.SaveSouls();
 
-            SpawnBoss();
+            // Spustíme Coroutinu pro delay
+            StartCoroutine(SpawnBossRoutine());
         }
         else
         {
@@ -53,13 +53,17 @@ public class BossAltar : MonoBehaviour
         }
     }
 
-    private void SpawnBoss()
+    // NOVÉ: Coroutina pro zpoždìný spawn
+    private IEnumerator SpawnBossRoutine()
     {
-        bossSpawned = true;
+        bossSpawned = true; // Hned oznaèíme jako spawnované, aby nešel triggerovat znovu
+        ShowUI(false);      // UI zmizí okamžitì po kliknutí
+
+        yield return new WaitForSeconds(0.5f); // Èekání 0.5 sekundy
+
         Instantiate(bossPrefab, spawnPoint.position, spawnPoint.rotation);
 
-        ShowUI(false);
-        this.enabled = false; // Vypne skript po úspìšném vyvolání
+        this.enabled = false;
     }
 
     private void ShowUI(bool state)

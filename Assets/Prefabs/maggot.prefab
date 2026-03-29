@@ -212,10 +212,12 @@ MonoBehaviour:
   attackRange: 6
   stoppingDistance: 5
   attackCooldown: 2
-  force: 5
+  force: 3
   whatIsTarget:
     serializedVersion: 2
     m_Bits: 128
+  aimOffset: {x: 0, y: -0.5, z: 0}
+  playerTransform: {fileID: 0}
 --- !u!114 &8949525748798507204
 MonoBehaviour:
   m_ObjectHideFlags: 0
