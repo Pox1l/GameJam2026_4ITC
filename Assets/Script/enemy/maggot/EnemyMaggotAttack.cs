@@ -15,7 +15,9 @@ public class EnemyMaggotAttack : MonoBehaviour
     public float attackCooldown = 2f;
     public float force = 5f;
     public LayerMask whatIsTarget; // Musí obsahovat "Player" a "Obstacles"
+    public Vector3 aimOffset = new Vector3(0, -0.5f, 0); // POSUN MÍØENÍ (nastavíš v Inspectoru)
 
+    [SerializeField]
     private Transform playerTransform;
     private float lastAttackTime = -999f;
     private NavMeshAgent agent;
@@ -57,14 +59,15 @@ public class EnemyMaggotAttack : MonoBehaviour
 
             if (Time.time >= lastAttackTime + attackCooldown && !isAttacking)
             {
+                Debug.Log("Starting attackSequence");
                 StartAttackSequence();
             }
         }
-        if (distanceToPlayer <= stoppingDistance && hasLineOfSight)
+        else if (distanceToPlayer <= stoppingDistance && hasLineOfSight)
         {
             StopMovement();
         }
-        else if (!isAttacking)
+        else //if (!isAttacking && !hasLineOfSight || !isAttacking && distanceToPlayer > attackRange)
         {
             // NEVIDÍ NEBO JE DALEKO -> JDE PO NÌM
             MoveToPlayer();
@@ -73,16 +76,23 @@ public class EnemyMaggotAttack : MonoBehaviour
 
     bool CheckLineOfSight()
     {
-        Vector2 direction = (playerTransform.position - firePoint.position).normalized;
-        float distance = Vector2.Distance(firePoint.position, playerTransform.position);
+        Vector3 actualTarget = playerTransform.position + aimOffset;
 
+        Vector2 direction = (actualTarget - firePoint.position).normalized;
+        float distance = Vector2.Distance(firePoint.position, actualTarget);
+
+
+        Debug.DrawRay(firePoint.position, direction * (distance + 0.1f), Color.yellow);
         // Raycast kontroluje, jestli v cestì nestojí zeï (Obstacle) døív než hráè
-        RaycastHit2D hit = Physics2D.Raycast(firePoint.position, direction, attackRange, whatIsTarget);
-
+        RaycastHit2D hit = Physics2D.Raycast(firePoint.position, direction, distance + 0.1f, whatIsTarget);
+       
         if (hit.collider != null && hit.collider.CompareTag("Player"))
         {
+            Debug.Log("found Player");
             return true;
+            
         }
+        Debug.Log("hráè nenalezen");
         return false;
     }
 
