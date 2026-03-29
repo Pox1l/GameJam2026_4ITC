@@ -28,6 +28,9 @@ public class BossController : MonoBehaviour
     private float lastAttackTime = -999f;
     private bool isAttacking = false;
 
+    private float lastShotTime = -1f;
+    private float shotThreshold = 0.1f; // Minimální pauza mezi výstøely v sekundách
+
     void Awake()
     {
         anim = GetComponent<Animator>();
@@ -54,9 +57,15 @@ public class BossController : MonoBehaviour
         float distanceToPlayer = Vector2.Distance(transform.position, playerTransform.position);
         bool hasLineOfSight = CheckLineOfSight();
 
+
         // 1. OTÁÈENÍ A ANIMACE SMÌRU
-        float directionToPlayer = playerTransform.position.x > transform.position.x ? 1f : -1f;
-        anim.SetFloat("Horizontal", directionToPlayer);
+       
+
+        if (!isAttacking)
+        {
+            float directionToPlayer = playerTransform.position.x > transform.position.x ? 1f : -1f;
+            anim.SetFloat("Horizontal", directionToPlayer);
+        }
 
         // 2. LOGIKA ÚTOKU A POHYBU
         if (hasLineOfSight)
@@ -127,6 +136,11 @@ public class BossController : MonoBehaviour
     // --- VOLÁNO PØES ANIMATION EVENT ---
     public void Shoot()
     {
+        // Pokud od posledního výstøelu uteklo ménì než 0.1s, metodu ukonèíme
+        if (Time.time < lastShotTime + shotThreshold) return;
+
+        lastShotTime = Time.time;
+
         if (projectilePrefab != null && firePoint != null)
         {
             GameObject proj = Instantiate(projectilePrefab, firePoint.position, firePoint.rotation);
@@ -134,6 +148,7 @@ public class BossController : MonoBehaviour
             {
                 Vector2 shootDir = (playerTransform.position + aimOffset - firePoint.position).normalized;
                 rb.AddForce(shootDir * projectileForce, ForceMode2D.Impulse);
+                FinishAttack();
             }
         }
         FinishAttack();
