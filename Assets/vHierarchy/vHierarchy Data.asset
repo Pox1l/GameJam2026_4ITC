@@ -17,6 +17,7 @@ MonoBehaviour:
     - 2cda990e2423bbf4892e6590ba056729
     - cbc04ead01e97bb4097d7338b5de5df5
     - 291dbf1c2c8d27544acc3c5558828f91
+    - ce62aae3c1afc044e93ffc1aea1cfa63
     values:
     - goDatas_byGlobalId:
         keys:
@@ -292,6 +293,9 @@ MonoBehaviour:
           iconNameOrGuid: CapsuleCollider Icon
           isIconRecursive: 0
           isColorRecursive: 0
+    - goDatas_byGlobalId:
+        keys: []
+        values: []
   bookmarks: []
   bookmarkedScenePaths:
   - Assets/Scenes/Menu.unity
