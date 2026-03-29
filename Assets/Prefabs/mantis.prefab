@@ -125,7 +125,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   essencePrefab: {fileID: 4866929244689541242, guid: 82de49efb4e92d043927f4906711ea58, type: 3}
-  amount: 1
+  amount: 3
 --- !u!114 &4886750235266790030
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -138,7 +138,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9fe9e4eccff370b40bfdde3ed1dd90ce, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  maxHealth: 50
+  maxHealth: 200
   player: {fileID: 5587460953628680251}
   hurtClip: {fileID: 8300000, guid: b7c6709d22ea8564aa84a7ec6427f694, type: 3}
 --- !u!114 &4954408467047936374
@@ -153,7 +153,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 42c61d9b03dcc294bae6d639ade5891c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  damage: 10
+  damage: 100
   attackRange: 1.53
   attackCooldown: 2
   hitAreaRadius: 1.21

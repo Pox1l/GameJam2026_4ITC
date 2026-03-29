@@ -291,7 +291,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9fe9e4eccff370b40bfdde3ed1dd90ce, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  maxHealth: 50
+  maxHealth: 100
   player: {fileID: 5260755269815943681}
   hurtClip: {fileID: 8300000, guid: b7c6709d22ea8564aa84a7ec6427f694, type: 3}
 --- !u!114 &4297505502288343902
@@ -340,7 +340,7 @@ MonoBehaviour:
   fixedPoint: {fileID: 5849388634419497970}
   firePoint: {fileID: 4833859124204225864}
   animator: {fileID: 8873663147207411950}
-  attackRange: 6
+  attackRange: 30
   stoppingDistance: 5
   attackCooldown: 2
   force: 3

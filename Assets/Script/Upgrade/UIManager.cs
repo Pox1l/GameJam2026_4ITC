@@ -176,5 +176,11 @@ public class UIManager : MonoBehaviour
     {
         SpawnerZone2D[] spawners = FindObjectsOfType<SpawnerZone2D>();
         foreach (var s in spawners) s.DespawnAllEnemies();
+
+        // PØIDÁNO: Smazání nepøátel spawnovaných kolem hráèe
+        if (PlayerRelativeSpawner.Instance != null)
+        {
+            PlayerRelativeSpawner.Instance.DespawnAllEnemies();
+        }
     }
 }

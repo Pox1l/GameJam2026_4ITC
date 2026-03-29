@@ -129,7 +129,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9fe9e4eccff370b40bfdde3ed1dd90ce, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  maxHealth: 50
+  maxHealth: 150
   player: {fileID: 5097650774568826582}
   hurtClip: {fileID: 8300000, guid: b7c6709d22ea8564aa84a7ec6427f694, type: 3}
 --- !u!114 &7166614706469826194
@@ -160,7 +160,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 29560e6d14840414eab0c37c1549d522, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  damage: 10
+  damage: 80
   attackRange: 3.65
   attackCooldown: 2.31
   hitAreaRadius: 0.92
