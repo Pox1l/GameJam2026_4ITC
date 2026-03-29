@@ -108,7 +108,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   moveSpeed: 2.4
-  stopDistance: 2
+  stopDistance: 1.5
   aggroRange: 5
   chaseRange: 15
 --- !u!114 &4896572317803429392
